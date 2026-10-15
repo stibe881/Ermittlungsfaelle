@@ -1,0 +1,2 @@
+# Schutz, falls das Projekt versehentlich komplett im Webroot liegt
+Require all denied

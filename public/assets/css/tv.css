@@ -1,0 +1,12 @@
+body.tv{font-size:clamp(20px,2.2vw,34px);overflow:hidden;cursor:none}
+#tv{height:100vh;display:flex;flex-direction:column;padding:3vh 4vw}
+.tv-head{display:flex;justify-content:space-between;color:var(--muted);font-size:.7em;letter-spacing:.2em;text-transform:uppercase}
+.tv-center{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:2vh}
+.tv-code{font:700 6em var(--serif);letter-spacing:.25em;color:var(--accent)}
+.tv-main{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:center;min-height:0}
+.tv-main.one{grid-template-columns:1fr}
+.tv .doc{font-size:1em}.tv .media{max-height:60vh;border-radius:10px}
+.tv-board{position:relative;flex:1;overflow:hidden;border-radius:12px;background:#2b2118}
+.tv-board .pin{cursor:default}
+.tv h1{font-size:2.2em;margin:0}
+.tv-tl .tl-item{font-size:.85em}
