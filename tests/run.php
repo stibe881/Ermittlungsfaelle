@@ -85,7 +85,7 @@ T::test('Erster Versuch ist ranglistenfähig, Zustand enthält keine Lösung', f
     $st = GameEngine::state(GameEngine::sessionFor($sid, $alice), $alice);
     $json = json_encode($st, JSON_UNESCAPED_UNICODE);
     T::ok(!isset($st['resolution']) && !isset($st['solution']));
-    foreach (['Alpenglühen', 'Zusatzkarte ausgegeben', 'Express-Reinigung', 'Bronzefalken', 'key_evidence', 'Fälschung'] as $needle)
+    foreach (['Alpenglühen', 'Zusatzkarte ausgegeben', 'Express-Reinigung', 'Bronzefalken', 'key_evidence', 'Fälschung', '1913', 'Unüberlegtes'] as $needle)
         T::ok(!str_contains($json, $needle), "Spoiler im Anfangszustand: $needle");
     T::eq(count($st['evidence']), 2);
     T::eq($st['accusation']['unlocked'], false); T::eq($st['accusation']['methods'], [], 'Anklage-Optionen zu Beginn gesperrt');
@@ -152,6 +152,38 @@ T::test('Notizen: Konflikterkennung', function () use ($sid, $alice, $bob) {
     T::throws(fn() => act($sid, $bob, 'note_update', ['id' => $note['id'], 'body' => 'X', 'base_version' => $note['version']]), 'version_conflict');
 });
 
+echo "Handy-Modul\n";
+T::test('Handy: erst nach Fund sichtbar, PIN serverseitig, Sperre nach Fehlversuchen, Inhalte erst nach Öffnen', function () {
+    $u = mkUser('phoner'); $s = GameEngine::createSession($u, 'fall-001-hotel', 'solo')['id'];
+    T::eq(GameEngine::state(GameEngine::sessionFor($s, $u), $u)['phone'], null);
+    T::throws(fn() => act($s, $u, 'phone_unlock', ['pin' => '1913']), 'phone_unavailable');
+    act($s, $u, 'inspect', ['hotspot' => 'hs_mobile']);
+    $st = GameEngine::state(GameEngine::sessionFor($s, $u), $u);
+    T::eq($st['phone']['unlocked'], false);
+    T::ok(!str_contains(json_encode($st), '1913') && !str_contains(json_encode($st), 'Unüberlegtes'));
+    T::throws(fn() => act($s, $u, 'phone_open', ['item' => 'pc_brandt']), 'phone_locked');
+    for ($i = 0; $i < 5; $i++) T::eq(act($s, $u, 'phone_unlock', ['pin' => '0000'])['result']['ok'], false);
+    T::throws(fn() => act($s, $u, 'phone_unlock', ['pin' => '1913']), 'phone_cooldown', 'Sperre auch bei richtiger PIN');
+    GameEngine::$clock = time() + 120;
+    T::eq(act($s, $u, 'phone_unlock', ['pin' => '1913'])['result']['ok'], true);
+    $st = GameEngine::state(GameEngine::sessionFor($s, $u), $u);
+    T::eq($st['phone']['unlocked'], true);
+    $ch = array_values(array_filter($st['phone']['chats'], fn($c) => $c['id'] === 'pc_brandt'))[0];
+    T::eq($ch['messages'], null, 'Nachrichten vor dem Öffnen nicht ausgeliefert');
+    $st = act($s, $u, 'phone_open', ['item' => 'pc_brandt'])['state'];
+    T::ok(in_array('ev_chat_brandt', array_column($st['evidence'], 'id'), true));
+    $st = act($s, $u, 'phone_open', ['item' => 'pcall_vm'])['state'];
+    $ev = array_values(array_filter($st['evidence'], fn($e) => $e['id'] === 'ev_voicemail_brandt'))[0];
+    T::eq($ev['kind'], 'audio'); T::ok(count($ev['transcript']) === 3 && $ev['transcript'][0]['speaker'] === 'Lukas Brandt');
+    GameEngine::$clock = null;
+});
+T::test('Validator: Handy-PIN-Quelle muss existieren', function () use ($caseJson) {
+    $c = $caseJson; $c['phone']['lock']['source'] = 'ev_gibt_es_nicht';
+    T::ok(!CaseValidator::validate($c)['ok']);
+    $c = $caseJson; $c['phone']['lock']['pin'] = 'abcd';
+    T::ok(!CaseValidator::validate($c)['ok']);
+});
+
 echo "Zeitmessung\n";
 T::test('Aktive Zeit: Leerlauf gedeckelt, Pause zählt nicht, Pausierte Sitzung gesperrt', function () {
     $u = mkUser('timer'); $s = GameEngine::createSession($u, 'fall-001-hotel', 'solo')['id'];
@@ -196,7 +228,8 @@ echo "Komplett-Durchspielen (Fall 001)\n";
 $carolSess = GameEngine::createSession($carol, 'fall-001-hotel', 'solo')['id'];
 $steps = [
     ['inspect', ['hotspot' => 'hs_weapon']], ['inspect', ['hotspot' => 'hs_glasses']], ['inspect', ['hotspot' => 'hs_calendar']],
-    ['inspect', ['hotspot' => 'hs_phone']], ['inspect', ['hotspot' => 'hs_briefcase']], ['inspect', ['hotspot' => 'hs_cam']],
+    ['inspect', ['hotspot' => 'hs_phone']], ['inspect', ['hotspot' => 'hs_briefcase']], ['inspect', ['hotspot' => 'hs_mobile']],
+    ['phone_unlock', ['pin' => '1913']], ['phone_open', ['item' => 'pc_brandt']], ['phone_open', ['item' => 'pcall_vm']], ['phone_open', ['item' => 'pc_roth']], ['inspect', ['hotspot' => 'hs_cam']],
     ['inspect', ['hotspot' => 'hs_stairs']], ['inspect', ['hotspot' => 'hs_board']],
     ['ask', ['suspect' => 'su_brandt', 'option' => 'b_where']], ['inspect', ['hotspot' => 'hs_receipts']],
     ['ask', ['suspect' => 'su_mara', 'option' => 'm_cards']], ['inspect', ['hotspot' => 'hs_ledger']],
@@ -213,7 +246,7 @@ T::test('Alle Spielschritte laufen in der vorgesehenen Reihenfolge', function ()
     Db::exec('UPDATE game_sessions SET last_activity_at=? WHERE id=?', [gmdate('Y-m-d H:i:s', GameEngine::$clock), $carolSess]);
     foreach ($steps as [$t, $x]) { GameEngine::$clock += 20; act($carolSess, $carol, $t, $x); }
     $st = GameEngine::state(GameEngine::sessionFor($carolSess, $carol), $carol);
-    T::eq(count($st['evidence']), 24, 'Alle 24 Beweise entdeckt');
+    T::eq(count($st['evidence']), 27, 'Alle 27 Beweise entdeckt');
     T::eq($st['active_seconds'], 20 * count($steps));
     T::ok(count($st['timeline']) >= 14);
     T::ok(!isset($st['resolution']));
@@ -246,8 +279,8 @@ T::test('Richtige Anklage löst Fall, vergibt Punkte, Rang und Erfolge', functio
 });
 T::test('Rangliste: Strafzeit, getrennt nach Solo/Team', function () use ($carolSess) {
     $row = Db::one('SELECT * FROM leaderboards WHERE session_id=?', [$carolSess]);
-    T::eq((int) $row['active_seconds'], 20 * 32);
-    T::eq((int) $row['score_seconds'], 20 * 32 + 600, '+10 Min. für eine Fehlanklage');
+    T::eq((int) $row['active_seconds'], 20 * count($GLOBALS['steps']) + 0 * 1);
+    T::eq((int) $row['score_seconds'], 20 * count($GLOBALS['steps']) + 600, '+10 Min. für eine Fehlanklage');
     T::eq($row['mode'], 'solo');
 });
 T::test('Wiederholung nach Lösung ist nicht ranglistenfähig', function () use ($carol) {

@@ -162,6 +162,8 @@ final class GameEngine
                 case 'note_add': case 'note_update': case 'note_delete': $result = self::doNote($s, $userId, $type, $req); break;
                 case 'board_add': case 'board_move': case 'board_update': case 'board_delete':
                 case 'link_add': case 'link_update': case 'link_delete': $result = Board::handle($s, $userId, $content, $p, $type, $req); break;
+                case 'phone_unlock': $result = self::doPhoneUnlock($s, $userId, $content, $p, (string) ($req['pin'] ?? '')); break;
+                case 'phone_open': $result = self::doPhoneOpen($s, $userId, $content, $p, (string) ($req['item'] ?? '')); break;
                 case 'timeline_add': case 'timeline_flag': case 'timeline_delete': $result = self::doTimeline($s, $userId, $content, $p, $type, $req); break;
                 case 'set_role': $result = self::doRole($s, $userId, $req); break;
                 case 'abandon':
@@ -240,6 +242,56 @@ final class GameEngine
             Db::exec('UPDATE game_sessions SET hints_used=hints_used+1 WHERE id=?', [$s['id']]);
         }
         return ['level' => $level, 'text' => $text];
+    }
+
+    // ------------------------------------------------------------------ Handy
+    private static function phoneAvailable(array $c, Progress $p): bool
+    {
+        return isset($c['phone']) && Condition::test($c['phone']['lock']['requires'] ?? null, $p);
+    }
+
+    private static function doPhoneUnlock(array $s, int $uid, array $c, Progress $p, string $pin): array
+    {
+        if (!self::phoneAvailable($c, $p)) throw new HttpError(404, 'phone_unavailable', 'Du hast noch kein Handy gesichert.');
+        if ($p->has('flag', 'phone_unlocked')) return ['ok' => true, 'already' => true];
+        $since = self::ts(self::now() - 60);
+        $fails = (int) Db::val("SELECT COUNT(*) FROM session_events WHERE session_id=? AND type='phone_unlock' AND payload LIKE '%\"ok\":false%' AND created_at > ?", [$s['id'], $since]);
+        if ($fails >= 5) throw new HttpError(429, 'phone_cooldown', 'Zu viele Fehlversuche. Das Gerät ist für eine Minute gesperrt.');
+        if (!hash_equals((string) $c['phone']['lock']['pin'], $pin)) return ['ok' => false, 'hint' => $c['phone']['lock']['hint'] ?? '', 'remaining' => 4 - $fails];
+        self::persist((int) $s['id'], $uid, $p, 'flag', 'phone_unlocked');
+        return ['ok' => true];
+    }
+
+    private static function doPhoneOpen(array $s, int $uid, array $c, Progress $p, string $item): array
+    {
+        if (!self::phoneAvailable($c, $p) || !$p->has('flag', 'phone_unlocked')) throw new HttpError(403, 'phone_locked', 'Das Handy ist gesperrt.');
+        $found = self::find($c['phone']['chats'] ?? [], $item) ?? self::find($c['phone']['calls'] ?? [], $item);
+        if (!$found || !Condition::test($found['requires'] ?? null, $p)) throw new HttpError(404, 'item_unavailable');
+        self::persist((int) $s['id'], $uid, $p, 'action', 'phone:' . $item);
+        $new = self::applyGrants((int) $s['id'], $uid, $p, $found['grants'] ?? null);
+        return ['item' => $item, 'new_evidence' => $new];
+    }
+
+    private static function phoneView(array $c, Progress $p): ?array
+    {
+        if (!self::phoneAvailable($c, $p)) return null;
+        $ph = $c['phone'];
+        if (!$p->has('flag', 'phone_unlocked')) return ['unlocked' => false, 'owner' => $ph['owner'], 'hint' => $ph['lock']['hint'] ?? ''];
+        $chats = []; $calls = [];
+        foreach ($ph['chats'] ?? [] as $x) {
+            if (!Condition::test($x['requires'] ?? null, $p)) continue;
+            $open = $p->has('action', 'phone:' . $x['id']);
+            $last = end($x['messages']);
+            $chats[] = ['id' => $x['id'], 'contact' => $x['contact'], 'open' => $open, 'time' => $last['time'], 'preview' => $open ? $last['text'] : null, 'messages' => $open ? $x['messages'] : null];
+        }
+        foreach ($ph['calls'] ?? [] as $x) {
+            if (!Condition::test($x['requires'] ?? null, $p)) continue;
+            $open = $p->has('action', 'phone:' . $x['id']);
+            $calls[] = ['id' => $x['id'], 'kind' => $x['kind'], 'contact' => $x['contact'], 'time' => $x['time'], 'duration' => $x['duration'], 'direction' => $x['direction'] ?? 'eingehend', 'played' => $open, 'transcript' => $open ? $x['transcript'] : null];
+        }
+        usort($chats, fn($a, $b) => strcmp($b['time'], $a['time']));
+        usort($calls, fn($a, $b) => strcmp($b['time'], $a['time']));
+        return ['unlocked' => true, 'owner' => $ph['owner'], 'chats' => $chats, 'calls' => $calls];
     }
 
     private static function doNote(array $s, int $uid, string $type, array $req): array
@@ -371,7 +423,7 @@ final class GameEngine
         foreach (Db::all('SELECT kind,ref,user_id,created_at FROM session_progress WHERE session_id=?', [$sid]) as $r) $progressRows[$r['kind'] . ':' . $r['ref']] = $r;
         foreach ($c['evidence'] as $e) if ($p->has('evidence', $e['id'])) {
             $links = array_values(array_filter($e['links'] ?? [], fn($l) => $p->has('evidence', $l)));
-            $evidence[] = ['id' => $e['id'], 'title' => $e['title'], 'category' => $e['category'], 'description' => $e['description'], 'location' => $e['location'], 'time' => $e['time'] ?? null, 'media' => $e['media'] ?? null, 'links' => $links, 'found_at' => $progressRows['evidence:' . $e['id']]['created_at'] ?? null];
+            $evidence[] = ['id' => $e['id'], 'title' => $e['title'], 'category' => $e['category'], 'description' => $e['description'], 'location' => $e['location'], 'time' => $e['time'] ?? null, 'media' => $e['media'] ?? null, 'audio' => $e['audio'] ?? null, 'video' => $e['video'] ?? null, 'kind' => $e['kind'] ?? null, 'transcript' => $e['transcript'] ?? null, 'links' => $links, 'found_at' => $progressRows['evidence:' . $e['id']]['created_at'] ?? null];
         }
 
         $scenes = [];
@@ -394,7 +446,7 @@ final class GameEngine
                 elseif (Condition::test($o['requires'] ?? null, $p)) $avail[] = ['id' => $o['id'], 'question' => $o['question'], 'confront' => !empty($o['confront'])];
             }
             usort($hist, fn($a, $b) => strcmp((string) $a['at'], (string) $b['at']));
-            $suspects[] = ['id' => $su['id'], 'name' => $su['name'], 'age' => $su['age'], 'job' => $su['job'], 'relation' => $su['relation'], 'bio' => $su['bio'], 'portrait' => $su['portrait'] ?? null, 'mood' => $su['mood'] ?? null, 'options' => $avail, 'history' => $hist];
+            $suspects[] = ['id' => $su['id'], 'name' => $su['name'], 'age' => $su['age'], 'job' => $su['job'], 'relation' => $su['relation'], 'bio' => $su['bio'], 'portrait' => $su['portrait'] ?? null, 'voice' => $su['voice'] ?? $su['name'], 'mood' => $su['mood'] ?? null, 'options' => $avail, 'history' => $hist];
         }
 
         $actions = [];
@@ -426,6 +478,7 @@ final class GameEngine
             'active_seconds' => $active, 'hints_used' => (int) $s['hints_used'], 'false_accusations' => (int) $s['false_accusations'],
             'max_false_accusations' => (int) Config::get('game.max_false_accusations', 3),
             'meta' => $c['meta'], 'briefing' => $c['briefing'] ?? '',
+            'phone' => self::phoneView($c, $p), 'voices' => $c['voices'] ?? new \stdClass(),
             'scenes' => $scenes, 'evidence' => $evidence, 'suspects' => $suspects, 'actions' => $actions,
             'timeline' => $timeline, 'custom_timeline' => $own, 'notes' => $notes, 'board' => $board, 'members' => $members, 'hints' => $hints,
             'roles' => self::ROLES, 'me' => $userId,

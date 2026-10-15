@@ -120,3 +120,19 @@ table{width:100%;border-collapse:collapse}th,td{padding:8px 10px;border-bottom:1
 .resolution .doc p,.resolution .doc li{margin:.4em 0}
 .paused-overlay{position:fixed;inset:0;background:#000d;z-index:90;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;text-align:center}
 .tvnote{border:1px dashed var(--line);padding:8px 12px;border-radius:8px}
+.player{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--panel2);margin:10px 0}
+.transcript{max-height:34vh;overflow:auto;margin-top:8px}
+.tr-line{padding:6px 8px;border-radius:6px;margin:3px 0;transition:.2s}
+.tr-line.now{background:#3a2f12;color:#fff}
+.phone{max-width:380px;margin:0 auto;background:#05070a;border:3px solid #2b3345;border-radius:34px;padding:18px 14px;min-height:540px;box-shadow:0 18px 50px #000a}
+.phone .status{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:12px}
+.pin-dots{display:flex;gap:14px;justify-content:center;margin:18px 0}
+.pin-dots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--accent)}.pin-dots i.on{background:var(--accent)}
+.keypad{display:grid;grid-template-columns:repeat(3,72px);gap:12px;justify-content:center}
+.keypad button{height:72px;border-radius:50%;border:1px solid var(--line);background:#12161f;font-size:1.5rem;cursor:pointer}
+.shake{animation:shake .4s}@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.plist button{display:flex;width:100%;gap:10px;align-items:center;text-align:left;padding:12px;border:0;border-bottom:1px solid var(--line);background:none;cursor:pointer;min-height:56px}
+.plist .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none}
+.plist .dot.read{background:transparent;border:1px solid var(--line)}
+.phone-chat{max-height:none}
+.listen{margin-left:8px}

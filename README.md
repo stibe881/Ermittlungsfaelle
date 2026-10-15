@@ -31,5 +31,7 @@ Tests: `php tests/run.php` (benötigt DB `coldcase_test`, siehe `tests/config.te
 | Admin (JSON-Editor, Validieren, Speichern als Version, Veröffentlichen, Testspiel, Archivieren, Statistik, Missbrauchsliste) | implementiert, API/Seite **nicht** automatisiert getestet; **kein grafischer Fall-Editor**, kein Medien-Upload |
 | PWA (Manifest, Service Worker) | implementiert, Installierbarkeit nicht auf Geräten geprüft; Icons sind Platzhalter |
 | Fall 001 „Die letzte Nacht im Hotel“ | vollständig (5 Szenen, 24 Beweise, 5 Personen, 27 Dialogoptionen, 6 Aktionen, 15 Ereignisse, 11 Hinweise, Lösung); **Bilder fehlen (Platzhalter)** |
+| Handy-Modul (Arbeitspaket 2): Fund → PIN-Rätsel (serverseitig, Sperre nach 5 Fehlversuchen/Min.), Chats, Anrufe, Mailbox, alles deutsch | implementiert, Engine-Tests + Browser-Durchlauf (390 px) |
+| Audio/Video deutsch | Player mit deutschen Untertiteln/Transkript und Sprachausgabe des Geräts (`speechSynthesis`, nur per Tippen). **Es gibt keine echten Sprach- oder Videoaufnahmen**: Dateien (`audio`/`video` im Fall-JSON → `assets/media/`) werden automatisch bevorzugt, sobald sie existieren. Qualität/Verfügbarkeit der deutschen Stimme hängt vom Gerät ab (im Test-Chromium keine – dort nur Untertitel) |
 | Fall 002, Fall 003 | **offen** |
-| Audio/Video, KI-Verhöre, 360°/3D, Web-Installer, Last-/Performance-Messung, Hetzner-Deployment | **offen** |
+| Gefilmte Verhörvideos/Schauspieler, KI-Verhöre, 360°/3D, Web-Installer, Last-/Performance-Messung, Hetzner-Deployment | **offen** |

@@ -25,7 +25,7 @@ final class CaseValidator
         if (isset($m['type']) && !in_array($m['type'], self::TYPES, true)) $e('meta.type unbekannt: ' . $m['type']);
 
         // ---- IDs sammeln
-        $ids = ['scene' => [], 'hotspot' => [], 'evidence' => [], 'suspect' => [], 'asked' => [], 'action' => [], 'timeline' => []];
+        $ids = ['phoneitem' => [], 'scene' => [], 'hotspot' => [], 'evidence' => [], 'suspect' => [], 'asked' => [], 'action' => [], 'timeline' => []];
         $reg = function (string $kind, mixed $id, string $ctx) use (&$ids, $e) {
             if (!is_string($id) || !preg_match('/^[a-z0-9_]{2,48}$/', $id)) { $e("Ungültige ID in $ctx"); return; }
             if (isset($ids[$kind][$id])) $e("Doppelte $kind-ID: $id");
@@ -66,6 +66,17 @@ final class CaseValidator
         }
         foreach ($c['actions'] as $a) $checkGrants($a['grants'] ?? null, 'action ' . $a['id']);
         $checkGrants($c['start'] ?? null, 'start');
+        $ph = $c['phone'] ?? null;
+        if ($ph) {
+            if (!preg_match('/^\d{4,6}$/', (string) ($ph['lock']['pin'] ?? ''))) $e('phone.lock.pin muss 4–6 Ziffern sein');
+            if (!isset($ids['evidence'][$ph['lock']['source'] ?? ''])) $e('phone.lock.source (PIN-Quelle) ist kein Beweis');
+            foreach (array_merge($ph['chats'] ?? [], $ph['calls'] ?? []) as $it) {
+                $reg('phoneitem', $it['id'] ?? null, 'Handy-Element');
+                $checkGrants($it['grants'] ?? null, 'Handy ' . ($it['id'] ?? '?'));
+                if (!Condition::isWellFormed($it['requires'] ?? null)) $e('Bedingung fehlerhaft in Handy ' . $it['id']);
+            }
+            foreach ($ph['calls'] ?? [] as $cl) if (empty($cl['transcript'])) $e('Anruf ohne Transkript: ' . $cl['id']);
+        }
 
         $conds = [];
         foreach ($c['scenes'] as $s) { $conds[] = [$s['requires'] ?? null, 'scene ' . $s['id']]; foreach ($s['hotspots'] ?? [] as $h) $conds[] = [$h['requires'] ?? null, 'hotspot ' . $h['id']]; }
@@ -94,6 +105,10 @@ final class CaseValidator
             }
             foreach ($c['suspects'] as $s) foreach ($s['dialogue'] ?? [] as $o) if (Condition::test($o['requires'] ?? null, $p)) { $p->add('asked', $o['id']); $apply($o['grants'] ?? null); }
             foreach ($c['actions'] as $a) if (Condition::test($a['requires'] ?? null, $p)) { $p->add('action', $a['id']); $apply($a['grants'] ?? null); }
+            if ($ph && Condition::test($ph['lock']['requires'] ?? null, $p) && $p->has('evidence', $ph['lock']['source'] ?? '')) {
+                $p->add('flag', 'phone_unlocked');
+                foreach (array_merge($ph['chats'] ?? [], $ph['calls'] ?? []) as $it) if (Condition::test($it['requires'] ?? null, $p)) { $p->add('action', 'phone:' . $it['id']); $apply($it['grants'] ?? null); }
+            }
         } while (array_sum(array_map('count', $p->sets)) > $before);
 
         foreach ($c['scenes'] as $s) {

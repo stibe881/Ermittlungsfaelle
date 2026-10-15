@@ -12,211 +12,1361 @@
     "cover": "case001/cover.jpg"
   },
   "briefing": "Grandhotel Seeblick, Luzern (fiktiv). Am Morgen des 14. November 2019 findet das Zimmerservice-Personal den Kunsthändler Dr. Konrad Imhof (61) tot in Suite 412. Die Kantonspolizei Luzern sichert den Tatort. Als leitende Ermittlerin oder leitender Ermittler übernimmst du die Akte. Prüfe den Tatort, sichere Beweise, befrage die Beteiligten und benenne am Ende Täter, Motiv und Tatmethode – belegt durch Beweise.",
-  "start": { "evidence": ["ev_police_report", "ev_scene_photos"], "flags": [] },
-
+  "start": {
+    "evidence": [
+      "ev_police_report",
+      "ev_scene_photos"
+    ],
+    "flags": []
+  },
   "scenes": [
     {
-      "id": "sc_suite", "title": "Suite 412", "image": "case001/suite412.jpg", "time_of_day": "Nacht, künstliches Licht",
+      "id": "sc_suite",
+      "title": "Suite 412",
+      "image": "case001/suite412.jpg",
+      "time_of_day": "Nacht, künstliches Licht",
       "description": "Die Suite im vierten Stock. Das Wohnzimmer ist unaufgeräumt, der Schreibtisch am Fenster ist übersät mit Unterlagen.",
       "hotspots": [
-        { "id": "hs_body", "label": "Fundlage des Opfers", "x": 52, "y": 62, "w": 22, "h": 22, "title": "Fundlage", "text": "Dr. Imhof liegt auf dem Rücken neben dem Schreibtisch, der Kopf zeigt zur Fensterfront. Die Kleidung (Hemd, Hose, keine Schuhe) ist nicht gestört. Es gibt keine Abwehrverletzungen an den Händen. Der Täter muss ihm sehr nahe gekommen sein, ohne dass er Gefahr erwartete." },
-        { "id": "hs_weapon", "label": "Bronzefigur am Boden", "x": 38, "y": 74, "w": 10, "h": 10, "title": "Bronzener Briefbeschwerer", "text": "Ein bronzener Falke auf einem Marmorsockel (ca. 2,1 kg) liegt unter dem Schreibtisch. Am Sockel haftet angetrocknetes Blut samt einzelnen Haaren. Die Kriminaltechnik sichert das Objekt.", "grants": { "evidence": ["ev_weapon"] } },
-        { "id": "hs_glasses", "label": "Zwei Weingläser", "x": 70, "y": 48, "w": 12, "h": 10, "title": "Weingläser auf dem Sideboard", "text": "Zwei Rotweingläser, eines noch halb voll, eines leer. Beide wurden benutzt. Die Flasche (Barolo) ist zu zwei Dritteln geleert.", "grants": { "evidence": ["ev_glasses"] } },
-        { "id": "hs_calendar", "label": "Tischkalender", "x": 22, "y": 40, "w": 14, "h": 10, "title": "Tischkalender", "text": "Ein handschriftlich geführter Taschenkalender liegt aufgeschlagen auf dem Schreibtisch. Der Eintrag für den 13. November ist mit Kugelschreiber unterstrichen.", "grants": { "evidence": ["ev_calendar"] } },
-        { "id": "hs_phone", "label": "Zimmertelefon", "x": 8, "y": 52, "w": 9, "h": 9, "title": "Zimmertelefon", "text": "Das Hoteltelefon führt ein internes Gesprächsjournal. Die Hotel-IT kann die Verbindungen der letzten Nacht ausdrucken.", "grants": { "evidence": ["ev_suite_phone"] } },
-        { "id": "hs_briefcase", "label": "Aktenkoffer", "x": 28, "y": 66, "w": 12, "h": 12, "title": "Aktenkoffer des Opfers", "text": "Ein unverschlossener Aktenkoffer neben dem Sessel. Darin: Geschäftsunterlagen, ein Expertisenordner und ein Briefentwurf.", "grants": { "evidence": ["ev_briefcase"] } }
+        {
+          "id": "hs_body",
+          "label": "Fundlage des Opfers",
+          "x": 52,
+          "y": 62,
+          "w": 22,
+          "h": 22,
+          "title": "Fundlage",
+          "text": "Dr. Imhof liegt auf dem Rücken neben dem Schreibtisch, der Kopf zeigt zur Fensterfront. Die Kleidung (Hemd, Hose, keine Schuhe) ist nicht gestört. Es gibt keine Abwehrverletzungen an den Händen. Der Täter muss ihm sehr nahe gekommen sein, ohne dass er Gefahr erwartete."
+        },
+        {
+          "id": "hs_weapon",
+          "label": "Bronzefigur am Boden",
+          "x": 38,
+          "y": 74,
+          "w": 10,
+          "h": 10,
+          "title": "Bronzener Briefbeschwerer",
+          "text": "Ein bronzener Falke auf einem Marmorsockel (ca. 2,1 kg) liegt unter dem Schreibtisch. Am Sockel haftet angetrocknetes Blut samt einzelnen Haaren. Die Kriminaltechnik sichert das Objekt.",
+          "grants": {
+            "evidence": [
+              "ev_weapon"
+            ]
+          }
+        },
+        {
+          "id": "hs_glasses",
+          "label": "Zwei Weingläser",
+          "x": 70,
+          "y": 48,
+          "w": 12,
+          "h": 10,
+          "title": "Weingläser auf dem Sideboard",
+          "text": "Zwei Rotweingläser, eines noch halb voll, eines leer. Beide wurden benutzt. Die Flasche (Barolo) ist zu zwei Dritteln geleert.",
+          "grants": {
+            "evidence": [
+              "ev_glasses"
+            ]
+          }
+        },
+        {
+          "id": "hs_calendar",
+          "label": "Tischkalender",
+          "x": 22,
+          "y": 40,
+          "w": 14,
+          "h": 10,
+          "title": "Tischkalender",
+          "text": "Ein handschriftlich geführter Taschenkalender liegt aufgeschlagen auf dem Schreibtisch. Der Eintrag für den 13. November ist mit Kugelschreiber unterstrichen.",
+          "grants": {
+            "evidence": [
+              "ev_calendar"
+            ]
+          }
+        },
+        {
+          "id": "hs_phone",
+          "label": "Zimmertelefon",
+          "x": 8,
+          "y": 52,
+          "w": 9,
+          "h": 9,
+          "title": "Zimmertelefon",
+          "text": "Das Hoteltelefon führt ein internes Gesprächsjournal. Die Hotel-IT kann die Verbindungen der letzten Nacht ausdrucken.",
+          "grants": {
+            "evidence": [
+              "ev_suite_phone"
+            ]
+          }
+        },
+        {
+          "id": "hs_briefcase",
+          "label": "Aktenkoffer",
+          "x": 28,
+          "y": 66,
+          "w": 12,
+          "h": 12,
+          "title": "Aktenkoffer des Opfers",
+          "text": "Ein unverschlossener Aktenkoffer neben dem Sessel. Darin: Geschäftsunterlagen, ein Expertisenordner und ein Briefentwurf.",
+          "grants": {
+            "evidence": [
+              "ev_briefcase"
+            ]
+          }
+        },
+        {
+          "id": "hs_mobile",
+          "label": "Smartphone im Sakko",
+          "x": 60,
+          "y": 30,
+          "w": 10,
+          "h": 10,
+          "title": "Smartphone des Opfers",
+          "text": "In der Innentasche des über der Stuhllehne hängenden Sakkos steckt Dr. Imhofs Smartphone. Es ist durch eine vierstellige PIN gesperrt. Du sicherst es für die Auswertung.",
+          "grants": {
+            "evidence": [
+              "ev_mobile"
+            ]
+          }
+        }
       ]
     },
     {
-      "id": "sc_corridor", "title": "Korridor 4. Stock", "image": "case001/corridor4.jpg", "time_of_day": "Früher Morgen",
+      "id": "sc_corridor",
+      "title": "Korridor 4. Stock",
+      "image": "case001/corridor4.jpg",
+      "time_of_day": "Früher Morgen",
       "description": "Ein langer, teppichbelegter Flur. Am Ende führt eine Brandschutztür ins Treppenhaus. Eine Dome-Kamera überwacht den Gang.",
       "hotspots": [
-        { "id": "hs_cam", "label": "Überwachungskamera 4B", "x": 48, "y": 12, "w": 12, "h": 10, "title": "Kamera 4B", "text": "Die Aufzeichnung von Kamera 4B bricht um 23:12 Uhr ab und setzt um 23:41 Uhr wieder ein. In dieser Zeit sind keine Bilder gespeichert. Die Hotel-IT gibt an, die Kamera sei neu gestartet.", "grants": { "evidence": ["ev_cam_log"] } },
-        { "id": "hs_stairs", "label": "Brandschutztür Treppenhaus", "x": 84, "y": 40, "w": 12, "h": 36, "title": "Brandschutztür", "text": "Die Tür ist nur von innen mit Panikstange zu öffnen und löst bei jedem Öffnen einen stillen Kontakt im Sicherheitssystem aus. Das Treppenhaus hat keine Kamera.", "grants": { "evidence": ["ev_stairwell"] } },
-        { "id": "hs_tray", "label": "Serviertablett vor Zimmer 411", "x": 14, "y": 70, "w": 12, "h": 12, "title": "Serviertablett", "text": "Ein Tablett mit zwei Kaffeetassen und Gebäckresten steht vor Zimmer 411. Laut Zimmerservice wurde es um 21:15 Uhr für Gäste aus Zimmer 411 serviert und hat mit dem Fall nichts zu tun." }
+        {
+          "id": "hs_cam",
+          "label": "Überwachungskamera 4B",
+          "x": 48,
+          "y": 12,
+          "w": 12,
+          "h": 10,
+          "title": "Kamera 4B",
+          "text": "Die Aufzeichnung von Kamera 4B bricht um 23:12 Uhr ab und setzt um 23:41 Uhr wieder ein. In dieser Zeit sind keine Bilder gespeichert. Die Hotel-IT gibt an, die Kamera sei neu gestartet.",
+          "grants": {
+            "evidence": [
+              "ev_cam_log"
+            ]
+          }
+        },
+        {
+          "id": "hs_stairs",
+          "label": "Brandschutztür Treppenhaus",
+          "x": 84,
+          "y": 40,
+          "w": 12,
+          "h": 36,
+          "title": "Brandschutztür",
+          "text": "Die Tür ist nur von innen mit Panikstange zu öffnen und löst bei jedem Öffnen einen stillen Kontakt im Sicherheitssystem aus. Das Treppenhaus hat keine Kamera.",
+          "grants": {
+            "evidence": [
+              "ev_stairwell"
+            ]
+          }
+        },
+        {
+          "id": "hs_tray",
+          "label": "Serviertablett vor Zimmer 411",
+          "x": 14,
+          "y": 70,
+          "w": 12,
+          "h": 12,
+          "title": "Serviertablett",
+          "text": "Ein Tablett mit zwei Kaffeetassen und Gebäckresten steht vor Zimmer 411. Laut Zimmerservice wurde es um 21:15 Uhr für Gäste aus Zimmer 411 serviert und hat mit dem Fall nichts zu tun."
+        }
       ]
     },
     {
-      "id": "sc_reception", "title": "Empfang & Backoffice", "image": "case001/reception.jpg", "time_of_day": "Morgen",
+      "id": "sc_reception",
+      "title": "Empfang & Backoffice",
+      "image": "case001/reception.jpg",
+      "time_of_day": "Morgen",
       "description": "Die marmorne Rezeption. Dahinter das Backoffice mit Schlüsselkartenjournal, Personalstempeluhr und Schwarzem Brett.",
       "hotspots": [
-        { "id": "hs_board", "label": "Schwarzes Brett (Wartungsplan)", "x": 18, "y": 32, "w": 16, "h": 18, "title": "Wartungsplan", "text": "Am Schwarzen Brett hängt ein Wartungsticket: Firmware-Update der Kameras im 4. Stock, Neustart zwischen 23:00 und 00:00 Uhr.", "grants": { "evidence": ["ev_maint_ticket"] } },
-        { "id": "hs_ledger", "label": "Kartenjournal", "x": 56, "y": 58, "w": 14, "h": 12, "requires": { "flag": "cards_known" }, "title": "Kartenjournal", "text": "Ein gebundenes Journal, in dem jede Ausgabe einer Zusatzkarte mit Uhrzeit, Zimmer, Empfänger und Autorisierung festgehalten wird.", "grants": { "evidence": ["ev_card_ledger"] } },
-        { "id": "hs_clock", "label": "Personal-Stempeluhr", "x": 80, "y": 30, "w": 12, "h": 14, "requires": { "evidence": "ev_cam_log" }, "title": "Stempeluhr", "text": "Die elektronische Zeiterfassung für das Nachtpersonal. Jeder Pausenbeginn und jedes Pausenende wird erfasst.", "grants": { "evidence": ["ev_timeclock"] } },
-        { "id": "hs_slip", "label": "Express-Wäscheauftrag", "x": 40, "y": 74, "w": 12, "h": 10, "requires": { "flag": "cleaning_known" }, "title": "Wäscheauftrag", "text": "Ein Durchschlag-Auftrag für den Express-Reinigungsdienst: Zimmer 308, Sakko, „Fleck am Ärmel\", Annahme 00:10 Uhr. Das Kleidungsstück liegt im Untergeschoss zur Abholung bereit.", "grants": { "evidence": ["ev_housekeeping"] } }
+        {
+          "id": "hs_board",
+          "label": "Schwarzes Brett (Wartungsplan)",
+          "x": 18,
+          "y": 32,
+          "w": 16,
+          "h": 18,
+          "title": "Wartungsplan",
+          "text": "Am Schwarzen Brett hängt ein Wartungsticket: Firmware-Update der Kameras im 4. Stock, Neustart zwischen 23:00 und 00:00 Uhr.",
+          "grants": {
+            "evidence": [
+              "ev_maint_ticket"
+            ]
+          }
+        },
+        {
+          "id": "hs_ledger",
+          "label": "Kartenjournal",
+          "x": 56,
+          "y": 58,
+          "w": 14,
+          "h": 12,
+          "requires": {
+            "flag": "cards_known"
+          },
+          "title": "Kartenjournal",
+          "text": "Ein gebundenes Journal, in dem jede Ausgabe einer Zusatzkarte mit Uhrzeit, Zimmer, Empfänger und Autorisierung festgehalten wird.",
+          "grants": {
+            "evidence": [
+              "ev_card_ledger"
+            ]
+          }
+        },
+        {
+          "id": "hs_clock",
+          "label": "Personal-Stempeluhr",
+          "x": 80,
+          "y": 30,
+          "w": 12,
+          "h": 14,
+          "requires": {
+            "evidence": "ev_cam_log"
+          },
+          "title": "Stempeluhr",
+          "text": "Die elektronische Zeiterfassung für das Nachtpersonal. Jeder Pausenbeginn und jedes Pausenende wird erfasst.",
+          "grants": {
+            "evidence": [
+              "ev_timeclock"
+            ]
+          }
+        },
+        {
+          "id": "hs_slip",
+          "label": "Express-Wäscheauftrag",
+          "x": 40,
+          "y": 74,
+          "w": 12,
+          "h": 10,
+          "requires": {
+            "flag": "cleaning_known"
+          },
+          "title": "Wäscheauftrag",
+          "text": "Ein Durchschlag-Auftrag für den Express-Reinigungsdienst: Zimmer 308, Sakko, „Fleck am Ärmel\", Annahme 00:10 Uhr. Das Kleidungsstück liegt im Untergeschoss zur Abholung bereit.",
+          "grants": {
+            "evidence": [
+              "ev_housekeeping"
+            ]
+          }
+        }
       ]
     },
     {
-      "id": "sc_bar", "title": "Hotelbar", "image": "case001/bar.jpg", "time_of_day": "Abend",
-      "requires": { "asked": "b_where" },
+      "id": "sc_bar",
+      "title": "Hotelbar",
+      "image": "case001/bar.jpg",
+      "time_of_day": "Abend",
+      "requires": {
+        "asked": "b_where"
+      },
       "description": "Die holzgetäfelte Bar im Erdgeschoss. Hinter dem Tresen die Kasse mit Tagesabschluss.",
       "hotspots": [
-        { "id": "hs_receipts", "label": "Kassenbons des Abends", "x": 64, "y": 44, "w": 14, "h": 12, "title": "Kassenbons", "text": "Der Bar-Kassenbericht listet alle Zahlungen mit Zeitstempel. Eine Zahlung per Zimmerrechnung wurde um 22:48 Uhr auf Zimmer 308 gebucht und vom Gast quittiert.", "grants": { "evidence": ["ev_bar_receipt"] } },
-        { "id": "hs_notebook", "label": "Notizbuch des Barkeepers", "x": 24, "y": 62, "w": 12, "h": 10, "title": "Notizbuch", "text": "Der Barkeeper notiert Besonderheiten. Für den Abend steht dort nur: „Imhof, Cognac 21:30 – schlecht gelaunt. Frau Roth Tee.\" Mehr nicht." }
+        {
+          "id": "hs_receipts",
+          "label": "Kassenbons des Abends",
+          "x": 64,
+          "y": 44,
+          "w": 14,
+          "h": 12,
+          "title": "Kassenbons",
+          "text": "Der Bar-Kassenbericht listet alle Zahlungen mit Zeitstempel. Eine Zahlung per Zimmerrechnung wurde um 22:48 Uhr auf Zimmer 308 gebucht und vom Gast quittiert.",
+          "grants": {
+            "evidence": [
+              "ev_bar_receipt"
+            ]
+          }
+        },
+        {
+          "id": "hs_notebook",
+          "label": "Notizbuch des Barkeepers",
+          "x": 24,
+          "y": 62,
+          "w": 12,
+          "h": 10,
+          "title": "Notizbuch",
+          "text": "Der Barkeeper notiert Besonderheiten. Für den Abend steht dort nur: „Imhof, Cognac 21:30 – schlecht gelaunt. Frau Roth Tee.\" Mehr nicht."
+        }
       ]
     },
     {
-      "id": "sc_laundry", "title": "Wäscherei (Untergeschoss)", "image": "case001/laundry.jpg", "time_of_day": "Tag, Neonlicht",
-      "requires": { "evidence": "ev_housekeeping" },
+      "id": "sc_laundry",
+      "title": "Wäscherei (Untergeschoss)",
+      "image": "case001/laundry.jpg",
+      "time_of_day": "Tag, Neonlicht",
+      "requires": {
+        "evidence": "ev_housekeeping"
+      },
       "description": "Ein nüchterner Technikraum mit Industriewaschmaschinen und Abholregalen.",
       "hotspots": [
-        { "id": "hs_jacket", "label": "Abholregal Express", "x": 46, "y": 40, "w": 18, "h": 24, "title": "Sakko Zimmer 308", "text": "Ein dunkelblaues Sakko hängt in einer Schutzhülle, Anhänger „308\". Am rechten Ärmel ist ein bräunlich-roter Fleck zu sehen. Das Sakko wurde bisher nicht gereinigt. Du lässt es als Beweisstück sichern.", "grants": { "evidence": ["ev_jacket"] } }
+        {
+          "id": "hs_jacket",
+          "label": "Abholregal Express",
+          "x": 46,
+          "y": 40,
+          "w": 18,
+          "h": 24,
+          "title": "Sakko Zimmer 308",
+          "text": "Ein dunkelblaues Sakko hängt in einer Schutzhülle, Anhänger „308\". Am rechten Ärmel ist ein bräunlich-roter Fleck zu sehen. Das Sakko wurde bisher nicht gereinigt. Du lässt es als Beweisstück sichern.",
+          "grants": {
+            "evidence": [
+              "ev_jacket"
+            ]
+          }
+        }
       ]
     }
   ],
-
   "evidence": [
-    { "id": "ev_police_report", "title": "Polizeirapport Kantonspolizei Luzern", "category": "dokument", "location": "Aktenlage", "time": "14.11.2019, 07:25", "description": "Zimmerservice-Mitarbeiterin findet um 07:10 Uhr die Tür zu Suite 412 angelehnt vor und den Gast leblos am Boden. Notruf 07:14. Auf der Stirnseite des Kopfes eine grosse Platzwunde. Die Suite wurde mit zwei Schlüsselkarten betreten (Gastkarte und eine Zusatzkarte), die Zusatzkarte ist nicht auffindbar. Fünf Personen kommen als Beteiligte in Betracht. Keine Einbruchsspuren.", "links": [] },
-    { "id": "ev_scene_photos", "title": "Tatortfotos Suite 412", "category": "foto", "location": "Suite 412", "time": "14.11.2019, 07:50", "media": "case001/ev_scene_photos.jpg", "description": "Übersichts- und Detailaufnahmen: Das Opfer liegt neben dem Schreibtisch. Auf dem Sideboard stehen zwei Weingläser, unter dem Schreibtisch liegt ein bronzener Gegenstand. Der Schreibtischstuhl ist umgekippt.", "links": ["ev_weapon", "ev_glasses"] },
-    { "id": "ev_autopsy", "title": "Autopsiebericht (IRM Zürich)", "category": "autopsie", "location": "Institut für Rechtsmedizin", "time": "14.11.2019, 15:00", "description": "Todesursache: stumpfes Schädel-Hirn-Trauma durch einen einzelnen kräftigen Schlag gegen die linke Schläfe mit einem schweren Gegenstand mit abgerundeter Kante. Keine Abwehrverletzungen. Todeseintritt innerhalb weniger Minuten. Aus Körperkerntemperatur und Totenstarre ergibt sich ein Todeszeitfenster von 23:15 bis 00:15 Uhr (Körperkerntemperatur und Totenstarre, korrigiert um die Raumtemperatur). Mageninhalt: Rotwein, kein Hinweis auf Gift.", "links": ["ev_weapon"] },
-    { "id": "ev_weapon", "title": "Bronzefalke (Tatwaffe)", "category": "objekt", "location": "Suite 412, unter dem Schreibtisch", "time": "14.11.2019, 08:05", "media": "case001/ev_weapon.jpg", "description": "Bronzefigur auf Marmorsockel, 2,1 kg. Blut und Haare des Opfers am Sockel (Antragung passend zur Verletzung). Auf der Unterseite des Sockels und an der Flügelkante sind Wischspuren, aber an einer geschützten Stelle der Sockelunterseite ein Teilabdruck.", "links": ["ev_autopsy", "ev_print_report"] },
-    { "id": "ev_glasses", "title": "Zwei benutzte Weingläser", "category": "objekt", "location": "Suite 412, Sideboard", "time": "14.11.2019, 08:10", "media": "case001/ev_glasses.jpg", "description": "Zwei Gläser, beide benutzt. Daraus folgt: Das Opfer hat kurz vor seinem Tod Besuch gehabt, dem es freiwillig Wein anbot und den es nicht als Gefahr sah.", "links": [] },
-    { "id": "ev_calendar", "title": "Taschenkalender des Opfers", "category": "dokument", "location": "Suite 412, Schreibtisch", "time": "13.11.2019", "media": "case001/ev_calendar.jpg", "description": "Eintrag Mi, 13.11.: „23:15 L.B. – letzte Aussprache, Suite.\" (unterstrichen). Eintrag Do, 14.11.: „09:00 Kantonspolizei – mit Dr. Roth.\" Die Initialen L.B. stehen im Kalender mehrfach für geschäftliche Termine.", "links": ["ev_briefcase"] },
-    { "id": "ev_suite_phone", "title": "Gesprächsjournal Zimmertelefon Suite 412", "category": "telefon", "location": "Hotel-IT", "time": "13.11.2019, 22:55", "description": "Ausgehende interne Verbindung von Suite 412 zu Zimmer 308 am 13.11. um 22:55 Uhr, Gesprächsdauer 41 Sekunden (Gespräch kam zustande). Keine weiteren Gespräche bis zum Morgen.", "links": [] },
-    { "id": "ev_briefcase", "title": "Expertise & Briefentwurf aus dem Aktenkoffer", "category": "dokument", "location": "Suite 412, Aktenkoffer", "time": "13.11.2019", "media": "case001/ev_briefcase.jpg", "description": "Zwei Dokumente: (1) Eine Gutachten-Expertise eines unabhängigen Labors: Das über die gemeinsame Kunsthandels AG verkaufte Gemälde „Alpenglühen\" (zugeschrieben Ferdinand Hodler) ist eine moderne Fälschung. Käufer: ein Versicherungskunde, Kaufpreis CHF 480'000. (2) Briefentwurf an die Kantonspolizei: Anzeige wegen Betrugs gegen den Mitgeschäftsführer, der alle Verkäufe der Galerie abgewickelt hat. Der Entwurf trägt das Datum 13.11. und ist unterzeichnet.", "links": ["ev_bank", "ev_calendar"] },
-    { "id": "ev_cam_log", "title": "Aufzeichnungsprotokoll Kamera 4B", "category": "video", "location": "Korridor 4. Stock", "time": "13.11.2019, 23:12–23:41", "description": "Kamera 4B: Aufzeichnung von 23:12:07 bis 23:41:33 Uhr unterbrochen (Neustart). Davor und danach unauffälliger Flur. Die Lücke wirft die Frage auf, ob jemand sie genutzt hat – oder ob sie zufällig entstand.", "links": ["ev_maint_ticket"] },
-    { "id": "ev_stairwell", "title": "Alarmprotokoll Brandschutztür 4. Stock", "category": "protokoll", "location": "Treppenhaus 4. Stock", "time": "13.11.2019, 23:52", "description": "Der stille Kontakt der Brandschutztür löste um 23:52 Uhr einmal aus (Öffnung von der Flurseite in Richtung Treppenhaus). Danach keine weitere Auslösung bis 06:30 Uhr.", "links": [] },
-    { "id": "ev_maint_ticket", "title": "Wartungsticket MT-2291 (Kamera-Firmware)", "category": "protokoll", "location": "Backoffice, Schwarzes Brett", "time": "11.11.2019", "description": "Ticket MT-2291, freigegeben am 11.11. vom Leiter Technik: Firmware-Update der Kameras im 4. Stock, Ausführung durch Haustechnik zwischen 23:00 und 00:00 Uhr. Das Fenster liegt bewusst im Nachtbetrieb.", "links": ["ev_cam_log"] },
-    { "id": "ev_card_ledger", "title": "Kartenjournal Rezeption", "category": "dokument", "location": "Backoffice, Rezeption", "time": "13.11.2019, 19:30", "media": "case001/ev_card_ledger.jpg", "description": "Eintrag 19:30 Uhr: Zusatzkarte Suite 412 ausgegeben an Herrn L. Brandt (Zimmer 308), autorisiert mündlich durch Dr. Imhof persönlich an der Rezeption, quittiert von Brandt. Zweck: „Geschäftsbesprechung\".", "links": ["ev_lock_log"] },
-    { "id": "ev_lock_log", "title": "Schliessprotokoll Suite 412", "category": "digital", "location": "Hotel-Schliesssystem", "time": "13.11.2019, 21:34–23:51", "description": "Ereignisse Türschloss 412: 21:34 Haustechnik-Karte (Öffnen), 21:58 Haustechnik-Karte (Schliessen). 23:22 Zusatzkarte (Öffnen). 23:51 Zusatzkarte (Schliessen, von aussen). Bis 07:10 keine weiteren Zutritte. Die Gastkarte des Opfers wurde nur 18:05 eingesetzt.", "links": ["ev_card_ledger"] },
-    { "id": "ev_bar_receipt", "title": "Bar-Kassenbericht 13.11.", "category": "quittung", "location": "Hotelbar", "time": "13.11.2019, 22:48", "media": "case001/ev_bar_receipt.jpg", "description": "Zahlung 22:48 Uhr per Zimmerrechnung Zimmer 308: 2 Whisky, quittiert mit der Unterschrift des Zimmergastes. Danach keine weitere Buchung auf Zimmer 308 an diesem Abend. Die Bar schloss um 00:30 Uhr.", "links": [] },
-    { "id": "ev_timeclock", "title": "Zeiterfassung Nachtleiterin", "category": "digital", "location": "Backoffice", "time": "13.11.2019, 23:08–23:38", "description": "Die Nachtleiterin hat sich um 23:08 Uhr in die Pause und um 23:38 Uhr zurück in den Dienst gestempelt. In dieser Zeit war der Empfang unbesetzt.", "links": [] },
-    { "id": "ev_mara_stmt", "title": "Aussage Nachtleiterin: Gast am Empfang", "category": "aussage", "location": "Befragung", "time": "13.11.2019, 23:58", "description": "Um ca. 23:58 Uhr erschien ein Hotelgast aus Zimmer 308 am Empfang und bat um einen Express-Reinigungsservice für sein Sakko wegen eines „Rotweinflecks\". Sie schrieb den Auftrag nieder; die Annahme wurde um 00:10 Uhr bestätigt.", "links": ["ev_housekeeping"] },
-    { "id": "ev_housekeeping", "title": "Express-Wäscheauftrag Zimmer 308", "category": "quittung", "location": "Backoffice", "time": "14.11.2019, 00:10", "description": "Auftrag: Sakko, Zimmer 308, „Fleck am Ärmel (Rotwein)\", Annahme 00:10 Uhr, Abholung am nächsten Morgen. Das Sakko wurde noch nicht gereinigt.", "links": ["ev_jacket"] },
-    { "id": "ev_jacket", "title": "Sakko aus Zimmer 308", "category": "objekt", "location": "Wäscherei, Untergeschoss", "time": "14.11.2019, 09:40", "media": "case001/ev_jacket.jpg", "description": "Dunkelblaues Herrensakko, Ärmel rechts mit braunrotem Fleck, ca. 3 cm. Visuell nicht von Rotwein zu unterscheiden. Eine Probe kann im Labor auf Blut und DNA untersucht werden.", "links": ["ev_blood_report"] },
-    { "id": "ev_blood_report", "title": "Labor: Blut- und DNA-Gutachten Sakko", "category": "dna", "location": "Forensisches Institut", "time": "Gutachten", "description": "Der Fleck am rechten Ärmel enthält Rotwein und menschliches Blut. Das DNA-Profil aus dem Blut stimmt mit dem Referenzprofil des Opfers überein (Wahrscheinlichkeit: Übereinstimmung nach Standard-STR-System mit einer Zufallsübereinstimmung von weniger als 1 zu 1 Milliarde). Die Blutverteilung (Spritzer) ist mit dem Nahbereich eines Schlages vereinbar.", "links": ["ev_jacket", "ev_autopsy"] },
-    { "id": "ev_print_report", "title": "Daktyloskopisches Gutachten Bronzefalke", "category": "fingerabdruck", "location": "Kriminaltechnik", "time": "Gutachten", "description": "Der Teilabdruck an der Sockelunterseite (Daumen, 14 übereinstimmende Minutien) stimmt mit dem Abdruck überein, den der Tatverdächtige zur Ausschlussbestimmung freiwillig abgab. Da der Falke erkennbar abgewischt wurde, liegt der Abdruck an einer Stelle, die bei grobem Abwischen übersehen wird (Umgreifen des Sockels).", "links": ["ev_weapon"] },
-    { "id": "ev_elena_phone", "title": "Verbindungsdaten Mobiltelefon E. Imhof", "category": "telefon", "location": "Provider", "time": "13.11.2019, 23:08–23:52", "description": "Durchgehendes Telefonat von 23:08 bis 23:52 Uhr mit einer Mobilnummer (J. Rüegg). Mobilfunkzelle: Hotelterrasse/Seeufer, durchgehend gleiche Zelle. Eine Bewegung in die oberen Stockwerke ist ausgeschlossen.", "links": [] },
-    { "id": "ev_bank", "title": "Kontenanalyse Kunsthandels AG", "category": "bank", "location": "Bankunterlagen", "time": "2018–2019", "description": "Die Verkaufserlöse der Galerie fliessen in zwei Raten (CHF 480'000 und CHF 120'000) auf ein Privatkonto des Mitgeschäftsführers. Die Zahlung für „Alpenglühen\" kam von einer Versicherung. Auf dem Privatkonto bestehen Schulden aus einem Immobilienkredit mit Fälligkeit im Dezember.", "links": ["ev_briefcase"] },
-    { "id": "ev_tobias_stmt", "title": "Aussage Haustechniker: Duschdefekt", "category": "aussage", "location": "Befragung", "time": "13.11.2019, 21:34", "description": "Der Haustechniker war 21:34–21:58 Uhr in Suite 412, um die Dusche zu reparieren (Serviceticket). Dr. Imhof telefonierte dabei laut und sagte sinngemäss: „Morgen früh erfährt es die Polizei, da habe ich nichts mehr zu verhandeln.\" Er nannte keinen Namen.", "links": ["ev_lock_log"] },
-    { "id": "ev_roth_stmt", "title": "Aussage Dr. S. Roth: Geräusch durch die Wand", "category": "aussage", "location": "Befragung", "time": "13.11.2019, ca. 23:30", "description": "Die Nachbarin in Suite 410 hörte „gegen halb zwölf, plusminus eine Viertelstunde\" einen dumpfen Aufprall und wenig später eine Tür. Sie hatte zuvor ein Schlafmittel genommen; ihre Zeitangabe ist deshalb unsicher.", "links": [] }
+    {
+      "id": "ev_police_report",
+      "title": "Polizeirapport Kantonspolizei Luzern",
+      "category": "dokument",
+      "location": "Aktenlage",
+      "time": "14.11.2019, 07:25",
+      "description": "Zimmerservice-Mitarbeiterin findet um 07:10 Uhr die Tür zu Suite 412 angelehnt vor und den Gast leblos am Boden. Notruf 07:14. Auf der Stirnseite des Kopfes eine grosse Platzwunde. Die Suite wurde mit zwei Schlüsselkarten betreten (Gastkarte und eine Zusatzkarte), die Zusatzkarte ist nicht auffindbar. Fünf Personen kommen als Beteiligte in Betracht. Keine Einbruchsspuren.",
+      "links": []
+    },
+    {
+      "id": "ev_scene_photos",
+      "title": "Tatortfotos Suite 412",
+      "category": "foto",
+      "location": "Suite 412",
+      "time": "14.11.2019, 07:50",
+      "media": "case001/ev_scene_photos.jpg",
+      "description": "Übersichts- und Detailaufnahmen: Das Opfer liegt neben dem Schreibtisch. Auf dem Sideboard stehen zwei Weingläser, unter dem Schreibtisch liegt ein bronzener Gegenstand. Der Schreibtischstuhl ist umgekippt.",
+      "links": [
+        "ev_weapon",
+        "ev_glasses"
+      ]
+    },
+    {
+      "id": "ev_autopsy",
+      "title": "Autopsiebericht (IRM Zürich)",
+      "category": "autopsie",
+      "location": "Institut für Rechtsmedizin",
+      "time": "14.11.2019, 15:00",
+      "description": "Todesursache: stumpfes Schädel-Hirn-Trauma durch einen einzelnen kräftigen Schlag gegen die linke Schläfe mit einem schweren Gegenstand mit abgerundeter Kante. Keine Abwehrverletzungen. Todeseintritt innerhalb weniger Minuten. Aus Körperkerntemperatur und Totenstarre ergibt sich ein Todeszeitfenster von 23:15 bis 00:15 Uhr (Körperkerntemperatur und Totenstarre, korrigiert um die Raumtemperatur). Mageninhalt: Rotwein, kein Hinweis auf Gift.",
+      "links": [
+        "ev_weapon"
+      ]
+    },
+    {
+      "id": "ev_weapon",
+      "title": "Bronzefalke (Tatwaffe)",
+      "category": "objekt",
+      "location": "Suite 412, unter dem Schreibtisch",
+      "time": "14.11.2019, 08:05",
+      "media": "case001/ev_weapon.jpg",
+      "description": "Bronzefigur auf Marmorsockel, 2,1 kg. Blut und Haare des Opfers am Sockel (Antragung passend zur Verletzung). Auf der Unterseite des Sockels und an der Flügelkante sind Wischspuren, aber an einer geschützten Stelle der Sockelunterseite ein Teilabdruck.",
+      "links": [
+        "ev_autopsy",
+        "ev_print_report"
+      ]
+    },
+    {
+      "id": "ev_glasses",
+      "title": "Zwei benutzte Weingläser",
+      "category": "objekt",
+      "location": "Suite 412, Sideboard",
+      "time": "14.11.2019, 08:10",
+      "media": "case001/ev_glasses.jpg",
+      "description": "Zwei Gläser, beide benutzt. Daraus folgt: Das Opfer hat kurz vor seinem Tod Besuch gehabt, dem es freiwillig Wein anbot und den es nicht als Gefahr sah.",
+      "links": []
+    },
+    {
+      "id": "ev_calendar",
+      "title": "Taschenkalender des Opfers",
+      "category": "dokument",
+      "location": "Suite 412, Schreibtisch",
+      "time": "13.11.2019",
+      "media": "case001/ev_calendar.jpg",
+      "description": "Eintrag Mi, 13.11.: „23:15 L.B. – letzte Aussprache, Suite.\" (unterstrichen). Eintrag Do, 14.11.: „09:00 Kantonspolizei – mit Dr. Roth.\" Die Initialen L.B. stehen im Kalender mehrfach für geschäftliche Termine.",
+      "links": [
+        "ev_briefcase"
+      ]
+    },
+    {
+      "id": "ev_suite_phone",
+      "title": "Gesprächsjournal Zimmertelefon Suite 412",
+      "category": "telefon",
+      "location": "Hotel-IT",
+      "time": "13.11.2019, 22:55",
+      "description": "Ausgehende interne Verbindung von Suite 412 zu Zimmer 308 am 13.11. um 22:55 Uhr, Gesprächsdauer 41 Sekunden (Gespräch kam zustande). Keine weiteren Gespräche bis zum Morgen.",
+      "links": []
+    },
+    {
+      "id": "ev_briefcase",
+      "title": "Expertise & Briefentwurf aus dem Aktenkoffer",
+      "category": "dokument",
+      "location": "Suite 412, Aktenkoffer",
+      "time": "13.11.2019",
+      "media": "case001/ev_briefcase.jpg",
+      "description": "Zwei Dokumente: (1) Eine Gutachten-Expertise eines unabhängigen Labors: Das über die gemeinsame Kunsthandels AG verkaufte Gemälde „Alpenglühen\" (zugeschrieben Ferdinand Hodler) ist eine moderne Fälschung (Datierung auf dem Gutachten: 1913). Käufer: ein Versicherungskunde, Kaufpreis CHF 480'000. (2) Briefentwurf an die Kantonspolizei: Anzeige wegen Betrugs gegen den Mitgeschäftsführer, der alle Verkäufe der Galerie abgewickelt hat. Der Entwurf trägt das Datum 13.11. und ist unterzeichnet.",
+      "links": [
+        "ev_bank",
+        "ev_calendar"
+      ]
+    },
+    {
+      "id": "ev_cam_log",
+      "title": "Aufzeichnungsprotokoll Kamera 4B",
+      "category": "video",
+      "location": "Korridor 4. Stock",
+      "time": "13.11.2019, 23:12–23:41",
+      "description": "Kamera 4B: Aufzeichnung von 23:12:07 bis 23:41:33 Uhr unterbrochen (Neustart). Davor und danach unauffälliger Flur. Die Lücke wirft die Frage auf, ob jemand sie genutzt hat – oder ob sie zufällig entstand.",
+      "links": [
+        "ev_maint_ticket"
+      ]
+    },
+    {
+      "id": "ev_stairwell",
+      "title": "Alarmprotokoll Brandschutztür 4. Stock",
+      "category": "protokoll",
+      "location": "Treppenhaus 4. Stock",
+      "time": "13.11.2019, 23:52",
+      "description": "Der stille Kontakt der Brandschutztür löste um 23:52 Uhr einmal aus (Öffnung von der Flurseite in Richtung Treppenhaus). Danach keine weitere Auslösung bis 06:30 Uhr.",
+      "links": []
+    },
+    {
+      "id": "ev_maint_ticket",
+      "title": "Wartungsticket MT-2291 (Kamera-Firmware)",
+      "category": "protokoll",
+      "location": "Backoffice, Schwarzes Brett",
+      "time": "11.11.2019",
+      "description": "Ticket MT-2291, freigegeben am 11.11. vom Leiter Technik: Firmware-Update der Kameras im 4. Stock, Ausführung durch Haustechnik zwischen 23:00 und 00:00 Uhr. Das Fenster liegt bewusst im Nachtbetrieb.",
+      "links": [
+        "ev_cam_log"
+      ]
+    },
+    {
+      "id": "ev_card_ledger",
+      "title": "Kartenjournal Rezeption",
+      "category": "dokument",
+      "location": "Backoffice, Rezeption",
+      "time": "13.11.2019, 19:30",
+      "media": "case001/ev_card_ledger.jpg",
+      "description": "Eintrag 19:30 Uhr: Zusatzkarte Suite 412 ausgegeben an Herrn L. Brandt (Zimmer 308), autorisiert mündlich durch Dr. Imhof persönlich an der Rezeption, quittiert von Brandt. Zweck: „Geschäftsbesprechung\".",
+      "links": [
+        "ev_lock_log"
+      ]
+    },
+    {
+      "id": "ev_lock_log",
+      "title": "Schliessprotokoll Suite 412",
+      "category": "digital",
+      "location": "Hotel-Schliesssystem",
+      "time": "13.11.2019, 21:34–23:51",
+      "description": "Ereignisse Türschloss 412: 21:34 Haustechnik-Karte (Öffnen), 21:58 Haustechnik-Karte (Schliessen). 23:22 Zusatzkarte (Öffnen). 23:51 Zusatzkarte (Schliessen, von aussen). Bis 07:10 keine weiteren Zutritte. Die Gastkarte des Opfers wurde nur 18:05 eingesetzt.",
+      "links": [
+        "ev_card_ledger"
+      ]
+    },
+    {
+      "id": "ev_bar_receipt",
+      "title": "Bar-Kassenbericht 13.11.",
+      "category": "quittung",
+      "location": "Hotelbar",
+      "time": "13.11.2019, 22:48",
+      "media": "case001/ev_bar_receipt.jpg",
+      "description": "Zahlung 22:48 Uhr per Zimmerrechnung Zimmer 308: 2 Whisky, quittiert mit der Unterschrift des Zimmergastes. Danach keine weitere Buchung auf Zimmer 308 an diesem Abend. Die Bar schloss um 00:30 Uhr.",
+      "links": []
+    },
+    {
+      "id": "ev_timeclock",
+      "title": "Zeiterfassung Nachtleiterin",
+      "category": "digital",
+      "location": "Backoffice",
+      "time": "13.11.2019, 23:08–23:38",
+      "description": "Die Nachtleiterin hat sich um 23:08 Uhr in die Pause und um 23:38 Uhr zurück in den Dienst gestempelt. In dieser Zeit war der Empfang unbesetzt.",
+      "links": []
+    },
+    {
+      "id": "ev_mara_stmt",
+      "title": "Aussage Nachtleiterin: Gast am Empfang",
+      "category": "aussage",
+      "location": "Befragung",
+      "time": "13.11.2019, 23:58",
+      "description": "Um ca. 23:58 Uhr erschien ein Hotelgast aus Zimmer 308 am Empfang und bat um einen Express-Reinigungsservice für sein Sakko wegen eines „Rotweinflecks\". Sie schrieb den Auftrag nieder; die Annahme wurde um 00:10 Uhr bestätigt.",
+      "links": [
+        "ev_housekeeping"
+      ]
+    },
+    {
+      "id": "ev_housekeeping",
+      "title": "Express-Wäscheauftrag Zimmer 308",
+      "category": "quittung",
+      "location": "Backoffice",
+      "time": "14.11.2019, 00:10",
+      "description": "Auftrag: Sakko, Zimmer 308, „Fleck am Ärmel (Rotwein)\", Annahme 00:10 Uhr, Abholung am nächsten Morgen. Das Sakko wurde noch nicht gereinigt.",
+      "links": [
+        "ev_jacket"
+      ]
+    },
+    {
+      "id": "ev_jacket",
+      "title": "Sakko aus Zimmer 308",
+      "category": "objekt",
+      "location": "Wäscherei, Untergeschoss",
+      "time": "14.11.2019, 09:40",
+      "media": "case001/ev_jacket.jpg",
+      "description": "Dunkelblaues Herrensakko, Ärmel rechts mit braunrotem Fleck, ca. 3 cm. Visuell nicht von Rotwein zu unterscheiden. Eine Probe kann im Labor auf Blut und DNA untersucht werden.",
+      "links": [
+        "ev_blood_report"
+      ]
+    },
+    {
+      "id": "ev_blood_report",
+      "title": "Labor: Blut- und DNA-Gutachten Sakko",
+      "category": "dna",
+      "location": "Forensisches Institut",
+      "time": "Gutachten",
+      "description": "Der Fleck am rechten Ärmel enthält Rotwein und menschliches Blut. Das DNA-Profil aus dem Blut stimmt mit dem Referenzprofil des Opfers überein (Wahrscheinlichkeit: Übereinstimmung nach Standard-STR-System mit einer Zufallsübereinstimmung von weniger als 1 zu 1 Milliarde). Die Blutverteilung (Spritzer) ist mit dem Nahbereich eines Schlages vereinbar.",
+      "links": [
+        "ev_jacket",
+        "ev_autopsy"
+      ]
+    },
+    {
+      "id": "ev_print_report",
+      "title": "Daktyloskopisches Gutachten Bronzefalke",
+      "category": "fingerabdruck",
+      "location": "Kriminaltechnik",
+      "time": "Gutachten",
+      "description": "Der Teilabdruck an der Sockelunterseite (Daumen, 14 übereinstimmende Minutien) stimmt mit dem Abdruck überein, den der Tatverdächtige zur Ausschlussbestimmung freiwillig abgab. Da der Falke erkennbar abgewischt wurde, liegt der Abdruck an einer Stelle, die bei grobem Abwischen übersehen wird (Umgreifen des Sockels).",
+      "links": [
+        "ev_weapon"
+      ]
+    },
+    {
+      "id": "ev_elena_phone",
+      "title": "Verbindungsdaten Mobiltelefon E. Imhof",
+      "category": "telefon",
+      "location": "Provider",
+      "time": "13.11.2019, 23:08–23:52",
+      "description": "Durchgehendes Telefonat von 23:08 bis 23:52 Uhr mit einer Mobilnummer (J. Rüegg). Mobilfunkzelle: Hotelterrasse/Seeufer, durchgehend gleiche Zelle. Eine Bewegung in die oberen Stockwerke ist ausgeschlossen.",
+      "links": []
+    },
+    {
+      "id": "ev_bank",
+      "title": "Kontenanalyse Kunsthandels AG",
+      "category": "bank",
+      "location": "Bankunterlagen",
+      "time": "2018–2019",
+      "description": "Die Verkaufserlöse der Galerie fliessen in zwei Raten (CHF 480'000 und CHF 120'000) auf ein Privatkonto des Mitgeschäftsführers. Die Zahlung für „Alpenglühen\" kam von einer Versicherung. Auf dem Privatkonto bestehen Schulden aus einem Immobilienkredit mit Fälligkeit im Dezember.",
+      "links": [
+        "ev_briefcase"
+      ]
+    },
+    {
+      "id": "ev_tobias_stmt",
+      "title": "Aussage Haustechniker: Duschdefekt",
+      "category": "aussage",
+      "location": "Befragung",
+      "time": "13.11.2019, 21:34",
+      "description": "Der Haustechniker war 21:34–21:58 Uhr in Suite 412, um die Dusche zu reparieren (Serviceticket). Dr. Imhof telefonierte dabei laut und sagte sinngemäss: „Morgen früh erfährt es die Polizei, da habe ich nichts mehr zu verhandeln.\" Er nannte keinen Namen.",
+      "links": [
+        "ev_lock_log"
+      ]
+    },
+    {
+      "id": "ev_roth_stmt",
+      "title": "Aussage Dr. S. Roth: Geräusch durch die Wand",
+      "category": "aussage",
+      "location": "Befragung",
+      "time": "13.11.2019, ca. 23:30",
+      "description": "Die Nachbarin in Suite 410 hörte „gegen halb zwölf, plusminus eine Viertelstunde\" einen dumpfen Aufprall und wenig später eine Tür. Sie hatte zuvor ein Schlafmittel genommen; ihre Zeitangabe ist deshalb unsicher.",
+      "links": []
+    },
+    {
+      "id": "ev_mobile",
+      "title": "Smartphone Dr. Imhof (gesperrt)",
+      "category": "digital",
+      "location": "Suite 412, Sakko am Stuhl",
+      "time": "14.11.2019, 08:20",
+      "description": "Smartphone des Opfers, durch vierstellige PIN gesperrt. Nach Entsperrung können Nachrichten, Anrufe und die Mailbox ausgewertet werden (Tab „Handy“). Die PIN ist aus dem Umfeld des Opfers zu erschliessen; raten ist nicht sinnvoll – das Gerät sperrt sich nach Fehlversuchen kurzzeitig.",
+      "links": [
+        "ev_briefcase"
+      ]
+    },
+    {
+      "id": "ev_chat_brandt",
+      "title": "Chatverlauf Imhof ↔ Brandt (13.11.)",
+      "category": "chat",
+      "location": "Smartphone Dr. Imhof",
+      "time": "13.11.2019, 17:58–18:49",
+      "description": "Messenger-Verlauf vom Nachmittag und frühen Abend. Imhof konfrontiert Brandt mit dem Labor-Gutachten, kündigt eine Aussprache um 23:15 Uhr an und droht mit der Polizei.",
+      "transcript": [
+        {
+          "speaker": "Lukas Brandt",
+          "text": "Konrad, was soll die Geheimniskrämerei? Du bist seit Mittag abweisend.",
+          "t": "17:58"
+        },
+        {
+          "speaker": "Konrad Imhof",
+          "text": "Ich habe das Labor-Gutachten zu „Alpenglühen“. Es ist eine Fälschung, Lukas. Und du hast die Verkäufe abgewickelt.",
+          "t": "18:42"
+        },
+        {
+          "speaker": "Lukas Brandt",
+          "text": "Das ist ein Irrtum. Lass uns heute Abend in Ruhe reden.",
+          "t": "18:44"
+        },
+        {
+          "speaker": "Konrad Imhof",
+          "text": "Du bekommst nachher eine Karte für die Suite. 23:15. Danach gehe ich zur Polizei – mit oder ohne dein Einverständnis.",
+          "t": "18:47"
+        },
+        {
+          "speaker": "Lukas Brandt",
+          "text": "Tu nichts Unüberlegtes.",
+          "t": "18:49"
+        }
+      ],
+      "links": [
+        "ev_briefcase",
+        "ev_card_ledger"
+      ]
+    },
+    {
+      "id": "ev_voicemail_brandt",
+      "title": "Mailbox-Nachricht von L. Brandt, 20:15",
+      "category": "audio",
+      "kind": "audio",
+      "location": "Smartphone Dr. Imhof, Mailbox",
+      "time": "13.11.2019, 20:15",
+      "description": "Gesprochene Nachricht auf der Mailbox, Dauer 38 Sekunden. Der Ton ist angespannt, die Formulierungen lassen Interpretationsspielraum: eine Drohung ist es nicht ausdrücklich – wohl aber Druck.",
+      "transcript": [
+        {
+          "speaker": "Lukas Brandt",
+          "text": "Konrad, ich bin’s. Ruf mich zurück."
+        },
+        {
+          "speaker": "Lukas Brandt",
+          "text": "Wir können das unter uns regeln. Wenn du die Polizei einschaltest, ruinierst du uns beide – und das lasse ich nicht zu."
+        },
+        {
+          "speaker": "Lukas Brandt",
+          "text": "Ruf an. Heute noch."
+        }
+      ],
+      "links": [
+        "ev_chat_brandt"
+      ]
+    }
   ],
-
   "suspects": [
     {
-      "id": "su_brandt", "name": "Lukas Brandt", "age": 48, "job": "Mitgeschäftsführer Imhof & Brandt Kunsthandels AG", "relation": "Geschäftspartner des Opfers, Gast in Zimmer 308",
-      "bio": "Brandt führt seit zehn Jahren gemeinsam mit Imhof die Galerie. Er gilt als charmant und geschäftstüchtig, lebt aber über seine Verhältnisse. Er reiste mit Imhof zu einer Kunstmesse nach Luzern.", "portrait": "case001/p_brandt.jpg", "mood": "kontrolliert, freundlich",
+      "id": "su_brandt",
+      "name": "Lukas Brandt",
+      "age": 48,
+      "job": "Mitgeschäftsführer Imhof & Brandt Kunsthandels AG",
+      "relation": "Geschäftspartner des Opfers, Gast in Zimmer 308",
+      "bio": "Brandt führt seit zehn Jahren gemeinsam mit Imhof die Galerie. Er gilt als charmant und geschäftstüchtig, lebt aber über seine Verhältnisse. Er reiste mit Imhof zu einer Kunstmesse nach Luzern.",
+      "portrait": "case001/p_brandt.jpg",
+      "mood": "kontrolliert, freundlich",
       "dialogue": [
-        { "id": "b_where", "question": "Wo waren Sie gestern Abend?", "answer": "Wir haben zusammen zu Abend gegessen, Konrad und ich. Danach noch ein Whisky in der Bar, bis kurz nach Mitternacht. Dann bin ich auf mein Zimmer 308 und habe niemanden mehr gesehen oder gesprochen." },
-        { "id": "b_relation", "question": "Wie war Ihr Verhältnis zu Dr. Imhof?", "answer": "Freundschaftlich, geschäftlich eng. Natürlich gab es Meinungsverschiedenheiten, wie in jeder Partnerschaft. Er war manchmal stur." },
-        { "id": "b_who", "question": "Hatte Dr. Imhof Streit mit jemandem?", "answer": "Mit seiner Tochter ging es ums Geld, das hat man gehört. Und der Hausmeister hat sich beklagt, er sei unhöflich gewesen. Ich will niemanden anschwärzen, aber fragen Sie die beiden." },
-        { "id": "b_bar", "question": "Dieser Kassenbon zeigt Ihre letzte Zahlung um 22:48 Uhr. Sie sagten, Sie seien bis nach Mitternacht in der Bar gewesen.", "requires": { "evidence": "ev_bar_receipt" }, "confront": true, "answer": "Ach … dann war es wohl früher. Ich war müde und bin vielleicht eine Runde ums Hotel gegangen, bevor ich aufs Zimmer bin. Auf die Uhr habe ich nicht geschaut." },
-        { "id": "b_call", "question": "Dr. Imhof hat um 22:55 Uhr Ihr Zimmer angerufen. Das Gespräch dauerte 41 Sekunden.", "requires": { "evidence": "ev_suite_phone" }, "confront": true, "answer": "Das Telefon klingelte, ich bin nicht rangegangen. Ich dachte, es sei der Portier wegen der Rechnung." },
-        { "id": "b_calendar", "question": "Im Kalender steht „23:15 L.B. – letzte Aussprache, Suite\". Und Sie bekamen um 19:30 Uhr eine Zusatzkarte für die Suite.", "requires": { "all": [ { "evidence": "ev_calendar" }, { "evidence": "ev_card_ledger" } ] }, "confront": true, "answer": "Die Karte hatte er mir gegeben, ja – für den Fall, dass wir noch etwas besprechen müssen. Aber ich bin nicht hingegangen. Ich hatte keine Lust mehr auf Diskussionen." },
-        { "id": "b_lock", "question": "Das Schliessprotokoll zeigt: Die Zusatzkarte öffnete die Suite um 23:22 Uhr und schloss sie um 23:51 Uhr von aussen.", "requires": { "all": [ { "evidence": "ev_lock_log" }, { "evidence": "ev_card_ledger" } ] }, "confront": true, "answer": "… Gut. Ich war dort. Wir haben geredet, laut, es ging um die Firma. Als ich ging, lebte er und war wütend. Ich habe nur nichts gesagt, weil ich wusste, wie das aussieht." },
-        { "id": "b_prints", "question": "Wären Sie bereit, Ihre Fingerabdrücke freiwillig zur Ausschlussbestimmung abzugeben?", "requires": { "evidence": "ev_weapon" }, "answer": "Selbstverständlich. Ich habe nichts zu verbergen. Wenn ich dort war, finden Sie wohl überall meine Spuren, das beweist ja nichts." },
-        { "id": "b_expertise", "question": "In Dr. Imhofs Koffer lag ein Gutachten: „Alpenglühen\" sei eine Fälschung. Und ein Briefentwurf an die Polizei.", "requires": { "evidence": "ev_briefcase" }, "confront": true, "answer": "Konrad hat sich da verrannt. Das Bild kam aus einer seriösen Quelle. Eine Anzeige hätte unsere Firma ruiniert, deshalb wollte ich es ihm ausreden – mehr nicht." },
-        { "id": "b_money", "question": "Die Erlöse der Galerie flossen auf Ihr Privatkonto, und Ihr Immobilienkredit wird im Dezember fällig.", "requires": { "evidence": "ev_bank" }, "confront": true, "answer": "Das ist Buchhaltung, das lässt sich erklären. Ich möchte dazu im Beisein eines Anwalts etwas sagen." },
-        { "id": "b_jacket", "question": "Sie haben um kurz nach Mitternacht Ihr Sakko in die Express-Reinigung gegeben.", "requires": { "evidence": "ev_housekeeping" }, "confront": true, "answer": "Ein Rotweinfleck. Das passiert. Ich lasse meine Kleider immer sofort reinigen." },
-        { "id": "b_blood", "question": "Das Labor hat am Ärmel Blut von Dr. Imhof nachgewiesen.", "requires": { "evidence": "ev_blood_report" }, "confront": true, "answer": "Ich … habe nichts mehr zu sagen. Ich möchte meinen Anwalt sprechen." }
-      ]
+        {
+          "id": "b_where",
+          "question": "Wo waren Sie gestern Abend?",
+          "answer": "Wir haben zusammen zu Abend gegessen, Konrad und ich. Danach noch ein Whisky in der Bar, bis kurz nach Mitternacht. Dann bin ich auf mein Zimmer 308 und habe niemanden mehr gesehen oder gesprochen."
+        },
+        {
+          "id": "b_relation",
+          "question": "Wie war Ihr Verhältnis zu Dr. Imhof?",
+          "answer": "Freundschaftlich, geschäftlich eng. Natürlich gab es Meinungsverschiedenheiten, wie in jeder Partnerschaft. Er war manchmal stur."
+        },
+        {
+          "id": "b_who",
+          "question": "Hatte Dr. Imhof Streit mit jemandem?",
+          "answer": "Mit seiner Tochter ging es ums Geld, das hat man gehört. Und der Hausmeister hat sich beklagt, er sei unhöflich gewesen. Ich will niemanden anschwärzen, aber fragen Sie die beiden."
+        },
+        {
+          "id": "b_bar",
+          "question": "Dieser Kassenbon zeigt Ihre letzte Zahlung um 22:48 Uhr. Sie sagten, Sie seien bis nach Mitternacht in der Bar gewesen.",
+          "requires": {
+            "evidence": "ev_bar_receipt"
+          },
+          "confront": true,
+          "answer": "Ach … dann war es wohl früher. Ich war müde und bin vielleicht eine Runde ums Hotel gegangen, bevor ich aufs Zimmer bin. Auf die Uhr habe ich nicht geschaut."
+        },
+        {
+          "id": "b_call",
+          "question": "Dr. Imhof hat um 22:55 Uhr Ihr Zimmer angerufen. Das Gespräch dauerte 41 Sekunden.",
+          "requires": {
+            "evidence": "ev_suite_phone"
+          },
+          "confront": true,
+          "answer": "Das Telefon klingelte, ich bin nicht rangegangen. Ich dachte, es sei der Portier wegen der Rechnung."
+        },
+        {
+          "id": "b_calendar",
+          "question": "Im Kalender steht „23:15 L.B. – letzte Aussprache, Suite\". Und Sie bekamen um 19:30 Uhr eine Zusatzkarte für die Suite.",
+          "requires": {
+            "all": [
+              {
+                "evidence": "ev_calendar"
+              },
+              {
+                "evidence": "ev_card_ledger"
+              }
+            ]
+          },
+          "confront": true,
+          "answer": "Die Karte hatte er mir gegeben, ja – für den Fall, dass wir noch etwas besprechen müssen. Aber ich bin nicht hingegangen. Ich hatte keine Lust mehr auf Diskussionen."
+        },
+        {
+          "id": "b_lock",
+          "question": "Das Schliessprotokoll zeigt: Die Zusatzkarte öffnete die Suite um 23:22 Uhr und schloss sie um 23:51 Uhr von aussen.",
+          "requires": {
+            "all": [
+              {
+                "evidence": "ev_lock_log"
+              },
+              {
+                "evidence": "ev_card_ledger"
+              }
+            ]
+          },
+          "confront": true,
+          "answer": "… Gut. Ich war dort. Wir haben geredet, laut, es ging um die Firma. Als ich ging, lebte er und war wütend. Ich habe nur nichts gesagt, weil ich wusste, wie das aussieht."
+        },
+        {
+          "id": "b_prints",
+          "question": "Wären Sie bereit, Ihre Fingerabdrücke freiwillig zur Ausschlussbestimmung abzugeben?",
+          "requires": {
+            "evidence": "ev_weapon"
+          },
+          "answer": "Selbstverständlich. Ich habe nichts zu verbergen. Wenn ich dort war, finden Sie wohl überall meine Spuren, das beweist ja nichts."
+        },
+        {
+          "id": "b_expertise",
+          "question": "In Dr. Imhofs Koffer lag ein Gutachten: „Alpenglühen\" sei eine Fälschung. Und ein Briefentwurf an die Polizei.",
+          "requires": {
+            "evidence": "ev_briefcase"
+          },
+          "confront": true,
+          "answer": "Konrad hat sich da verrannt. Das Bild kam aus einer seriösen Quelle. Eine Anzeige hätte unsere Firma ruiniert, deshalb wollte ich es ihm ausreden – mehr nicht."
+        },
+        {
+          "id": "b_money",
+          "question": "Die Erlöse der Galerie flossen auf Ihr Privatkonto, und Ihr Immobilienkredit wird im Dezember fällig.",
+          "requires": {
+            "evidence": "ev_bank"
+          },
+          "confront": true,
+          "answer": "Das ist Buchhaltung, das lässt sich erklären. Ich möchte dazu im Beisein eines Anwalts etwas sagen."
+        },
+        {
+          "id": "b_jacket",
+          "question": "Sie haben um kurz nach Mitternacht Ihr Sakko in die Express-Reinigung gegeben.",
+          "requires": {
+            "evidence": "ev_housekeeping"
+          },
+          "confront": true,
+          "answer": "Ein Rotweinfleck. Das passiert. Ich lasse meine Kleider immer sofort reinigen."
+        },
+        {
+          "id": "b_blood",
+          "question": "Das Labor hat am Ärmel Blut von Dr. Imhof nachgewiesen.",
+          "requires": {
+            "evidence": "ev_blood_report"
+          },
+          "confront": true,
+          "answer": "Ich … habe nichts mehr zu sagen. Ich möchte meinen Anwalt sprechen."
+        }
+      ],
+      "voice": "Lukas Brandt"
     },
     {
-      "id": "su_elena", "name": "Elena Imhof", "age": 29, "job": "Kunstrestauratorin", "relation": "Tochter des Opfers, Gast in Zimmer 305",
-      "bio": "Elena arbeitet freiberuflich in Zürich. Das Verhältnis zum Vater war angespannt, er verweigerte ihr ein Darlehen für ein eigenes Atelier. Sie ist Alleinerbin.", "portrait": "case001/p_elena.jpg", "mood": "gereizt, trauernd",
+      "id": "su_elena",
+      "name": "Elena Imhof",
+      "age": 29,
+      "job": "Kunstrestauratorin",
+      "relation": "Tochter des Opfers, Gast in Zimmer 305",
+      "bio": "Elena arbeitet freiberuflich in Zürich. Das Verhältnis zum Vater war angespannt, er verweigerte ihr ein Darlehen für ein eigenes Atelier. Sie ist Alleinerbin.",
+      "portrait": "case001/p_elena.jpg",
+      "mood": "gereizt, trauernd",
       "dialogue": [
-        { "id": "e_where", "question": "Wo waren Sie gestern Abend?", "answer": "In meinem Zimmer 305, ab etwa 22:30. Ich wollte allein sein. Später war ich noch kurz draussen, Luft schnappen." },
-        { "id": "e_father", "question": "Wie war Ihr Verhältnis zu Ihrem Vater?", "answer": "Schwierig. Wir haben beim Essen gestritten, er hat mir das Geld für mein Atelier verweigert. Ja, ich bin wütend gewesen. Aber ich hätte ihm nie etwas angetan." },
-        { "id": "e_outside", "question": "Sie waren „draussen\". Wo genau und wie lange?", "requires": { "asked": "e_where" }, "answer": "Auf der Seeterrasse. Ich habe mit meinem Freund Jonas telefoniert, er weiss noch nichts von meinem Vater. Papa mochte ihn nicht, deshalb habe ich es verschwiegen. Ich war eine halbe Stunde draussen, vielleicht länger." },
-        { "id": "e_brandt", "question": "Wussten Sie von Unstimmigkeiten in der Firma?", "requires": { "evidence": "ev_briefcase" }, "answer": "Papa sagte vorgestern, er traue Lukas nicht mehr, ein Bild sei „krumm\" verkauft worden. Mehr hat er nicht erzählt." }
-      ]
+        {
+          "id": "e_where",
+          "question": "Wo waren Sie gestern Abend?",
+          "answer": "In meinem Zimmer 305, ab etwa 22:30. Ich wollte allein sein. Später war ich noch kurz draussen, Luft schnappen."
+        },
+        {
+          "id": "e_father",
+          "question": "Wie war Ihr Verhältnis zu Ihrem Vater?",
+          "answer": "Schwierig. Wir haben beim Essen gestritten, er hat mir das Geld für mein Atelier verweigert. Ja, ich bin wütend gewesen. Aber ich hätte ihm nie etwas angetan."
+        },
+        {
+          "id": "e_outside",
+          "question": "Sie waren „draussen\". Wo genau und wie lange?",
+          "requires": {
+            "asked": "e_where"
+          },
+          "answer": "Auf der Seeterrasse. Ich habe mit meinem Freund Jonas telefoniert, er weiss noch nichts von meinem Vater. Papa mochte ihn nicht, deshalb habe ich es verschwiegen. Ich war eine halbe Stunde draussen, vielleicht länger."
+        },
+        {
+          "id": "e_brandt",
+          "question": "Wussten Sie von Unstimmigkeiten in der Firma?",
+          "requires": {
+            "evidence": "ev_briefcase"
+          },
+          "answer": "Papa sagte vorgestern, er traue Lukas nicht mehr, ein Bild sei „krumm\" verkauft worden. Mehr hat er nicht erzählt."
+        }
+      ],
+      "voice": "Elena Imhof"
     },
     {
-      "id": "su_mara", "name": "Mara Keller", "age": 34, "job": "Nachtleiterin Rezeption", "relation": "Hotelangestellte, Nachtdienst",
-      "bio": "Seit sechs Jahren im Haus. Zuverlässig, aber überlastet – sie ist alleinerziehend und übernimmt oft Nachtschichten.", "portrait": "case001/p_mara.jpg", "mood": "nervös, loyal gegenüber dem Haus",
+      "id": "su_mara",
+      "name": "Mara Keller",
+      "age": 34,
+      "job": "Nachtleiterin Rezeption",
+      "relation": "Hotelangestellte, Nachtdienst",
+      "bio": "Seit sechs Jahren im Haus. Zuverlässig, aber überlastet – sie ist alleinerziehend und übernimmt oft Nachtschichten.",
+      "portrait": "case001/p_mara.jpg",
+      "mood": "nervös, loyal gegenüber dem Haus",
       "dialogue": [
-        { "id": "m_shift", "question": "Wie verlief Ihr Dienst in der Tatnacht?", "answer": "Ich habe um 22:00 Uhr übernommen und war die ganze Nacht am Empfang. Nichts Auffälliges." },
-        { "id": "m_cards", "question": "Wer kann Zusatzkarten für Suiten ausgeben?", "answer": "Nur wir an der Rezeption, und nur auf Anweisung des Gastes. Jede Ausgabe tragen wir ins Kartenjournal im Backoffice ein.", "grants": { "flags": ["cards_known"] } },
-        { "id": "m_maint", "question": "Wissen Sie etwas über den Kamera-Neustart in der Nacht?", "requires": { "evidence": "ev_maint_ticket" }, "answer": "Das war ein Routineupdate, vom Leiter Technik angeordnet, schon letzte Woche. Ich habe davon gar nichts mitbekommen." },
-        { "id": "m_leave", "question": "Zwischen 23:08 und 23:38 Uhr haben Sie sich in die Pause gestempelt. Sie sagten, Sie seien durchgehend am Empfang gewesen.", "requires": { "evidence": "ev_timeclock" }, "confront": true, "answer": "Ja … ich habe mit meiner kranken Tochter telefoniert, im Pausenraum. Das ist in der Nacht eigentlich nicht erlaubt, ohne Vertretung. Ich hatte Angst um meine Stelle." },
-        { "id": "m_last", "question": "Wer ist Ihnen nach Ihrer Rückkehr aufgefallen?", "requires": { "asked": "m_leave" }, "answer": "Kurz vor Mitternacht kam ein Gast aus 308 an den Empfang, wirkte gehetzt. Er wollte sein Sakko sofort reinigen lassen, wegen Rotwein. Ich habe den Auftrag geschrieben.", "grants": { "evidence": ["ev_mara_stmt"], "flags": ["cleaning_known"] } }
-      ]
+        {
+          "id": "m_shift",
+          "question": "Wie verlief Ihr Dienst in der Tatnacht?",
+          "answer": "Ich habe um 22:00 Uhr übernommen und war die ganze Nacht am Empfang. Nichts Auffälliges."
+        },
+        {
+          "id": "m_cards",
+          "question": "Wer kann Zusatzkarten für Suiten ausgeben?",
+          "answer": "Nur wir an der Rezeption, und nur auf Anweisung des Gastes. Jede Ausgabe tragen wir ins Kartenjournal im Backoffice ein.",
+          "grants": {
+            "flags": [
+              "cards_known"
+            ]
+          }
+        },
+        {
+          "id": "m_maint",
+          "question": "Wissen Sie etwas über den Kamera-Neustart in der Nacht?",
+          "requires": {
+            "evidence": "ev_maint_ticket"
+          },
+          "answer": "Das war ein Routineupdate, vom Leiter Technik angeordnet, schon letzte Woche. Ich habe davon gar nichts mitbekommen."
+        },
+        {
+          "id": "m_leave",
+          "question": "Zwischen 23:08 und 23:38 Uhr haben Sie sich in die Pause gestempelt. Sie sagten, Sie seien durchgehend am Empfang gewesen.",
+          "requires": {
+            "evidence": "ev_timeclock"
+          },
+          "confront": true,
+          "answer": "Ja … ich habe mit meiner kranken Tochter telefoniert, im Pausenraum. Das ist in der Nacht eigentlich nicht erlaubt, ohne Vertretung. Ich hatte Angst um meine Stelle."
+        },
+        {
+          "id": "m_last",
+          "question": "Wer ist Ihnen nach Ihrer Rückkehr aufgefallen?",
+          "requires": {
+            "asked": "m_leave"
+          },
+          "answer": "Kurz vor Mitternacht kam ein Gast aus 308 an den Empfang, wirkte gehetzt. Er wollte sein Sakko sofort reinigen lassen, wegen Rotwein. Ich habe den Auftrag geschrieben.",
+          "grants": {
+            "evidence": [
+              "ev_mara_stmt"
+            ],
+            "flags": [
+              "cleaning_known"
+            ]
+          }
+        }
+      ],
+      "voice": "Mara Keller"
     },
     {
-      "id": "su_tobias", "name": "Tobias Wyss", "age": 52, "job": "Haustechniker", "relation": "Hotelangestellter, Zugang zu technischen Bereichen",
-      "bio": "Seit zwanzig Jahren im Haus. Kennt jeden Winkel, jede Schaltung. Gilt als wortkarg, aber loyal.", "portrait": "case001/p_tobias.jpg", "mood": "wortkarg, misstrauisch",
+      "id": "su_tobias",
+      "name": "Tobias Wyss",
+      "age": 52,
+      "job": "Haustechniker",
+      "relation": "Hotelangestellter, Zugang zu technischen Bereichen",
+      "bio": "Seit zwanzig Jahren im Haus. Kennt jeden Winkel, jede Schaltung. Gilt als wortkarg, aber loyal.",
+      "portrait": "case001/p_tobias.jpg",
+      "mood": "wortkarg, misstrauisch",
       "dialogue": [
-        { "id": "t_maint", "question": "Wer hat den Neustart der Kameras angeordnet?", "answer": "Das stand im Plan von letzter Woche, ich habe es nur ausgeführt. Um 23:12 gestartet, das Update lief ein paar Minuten, danach hing die Kamera noch im Neustart." },
-        { "id": "t_suite", "question": "Waren Sie in der Nacht in der Suite 412?", "answer": "Am Abend, 21:34 bis 21:58, wegen der Dusche. Dr. Imhof telefonierte und sagte: Morgen früh erfährt es die Polizei, da habe er nichts mehr zu verhandeln. Ich habe nicht nachgefragt.", "grants": { "evidence": ["ev_tobias_stmt"] } },
-        { "id": "t_cards", "question": "Hatten Sie nach 22 Uhr noch einmal Zutritt zur Suite?", "requires": { "evidence": "ev_lock_log" }, "answer": "Nein. Meine Karte ist im Protokoll, aber nur am Abend. Ich war um 23:12 im Technikraum und danach bis Mitternacht im Keller beim Server. Das Kamera-Update ist keine Absicht gewesen." }
-      ]
+        {
+          "id": "t_maint",
+          "question": "Wer hat den Neustart der Kameras angeordnet?",
+          "answer": "Das stand im Plan von letzter Woche, ich habe es nur ausgeführt. Um 23:12 gestartet, das Update lief ein paar Minuten, danach hing die Kamera noch im Neustart."
+        },
+        {
+          "id": "t_suite",
+          "question": "Waren Sie in der Nacht in der Suite 412?",
+          "answer": "Am Abend, 21:34 bis 21:58, wegen der Dusche. Dr. Imhof telefonierte und sagte: Morgen früh erfährt es die Polizei, da habe er nichts mehr zu verhandeln. Ich habe nicht nachgefragt.",
+          "grants": {
+            "evidence": [
+              "ev_tobias_stmt"
+            ]
+          }
+        },
+        {
+          "id": "t_cards",
+          "question": "Hatten Sie nach 22 Uhr noch einmal Zutritt zur Suite?",
+          "requires": {
+            "evidence": "ev_lock_log"
+          },
+          "answer": "Nein. Meine Karte ist im Protokoll, aber nur am Abend. Ich war um 23:12 im Technikraum und danach bis Mitternacht im Keller beim Server. Das Kamera-Update ist keine Absicht gewesen."
+        }
+      ],
+      "voice": "Tobias Wyss"
     },
     {
-      "id": "su_roth", "name": "Dr. Sabine Roth", "age": 47, "job": "Rechtsanwältin", "relation": "Anwältin des Opfers, Nachbarin in Suite 410",
-      "bio": "Seit Jahren Imhofs Rechtsvertreterin. Anwesend, um eine wichtige Besprechung vorzubereiten. Diskret, präzise.", "portrait": "case001/p_roth.jpg", "mood": "gefasst, wortgewandt",
+      "id": "su_roth",
+      "name": "Dr. Sabine Roth",
+      "age": 47,
+      "job": "Rechtsanwältin",
+      "relation": "Anwältin des Opfers, Nachbarin in Suite 410",
+      "bio": "Seit Jahren Imhofs Rechtsvertreterin. Anwesend, um eine wichtige Besprechung vorzubereiten. Diskret, präzise.",
+      "portrait": "case001/p_roth.jpg",
+      "mood": "gefasst, wortgewandt",
       "dialogue": [
-        { "id": "r_where", "question": "Wo waren Sie in der Nacht?", "answer": "In meiner Suite 410, nebenan. Ab etwa 23:00 Uhr habe ich ein Schlafmittel genommen, ich schlafe auf Reisen schlecht." },
-        { "id": "r_heard", "question": "Haben Sie etwas durch die Wand gehört?", "requires": { "asked": "r_where" }, "answer": "Gegen halb zwölf, plusminus eine Viertelstunde, einen dumpfen Aufprall, wie etwas Schweres, das umfällt. Kurz darauf eine Tür. Ich dachte, Konrad räumt auf. Die Zeit kann ich nicht beschwören.", "grants": { "evidence": ["ev_roth_stmt"] } },
-        { "id": "r_lawyer", "question": "Im Aktenkoffer lag ein Briefentwurf für die Polizei. Wussten Sie davon?", "requires": { "evidence": "ev_briefcase" }, "answer": "Ich habe den Entwurf mit ihm abgestimmt. Er wollte heute um 9 Uhr Anzeige gegen seinen Kompagnon erstatten. Er hat ihn am Abend damit konfrontiert, das hat er mir kurz vor 22 Uhr gesagt." }
-      ]
+        {
+          "id": "r_where",
+          "question": "Wo waren Sie in der Nacht?",
+          "answer": "In meiner Suite 410, nebenan. Ab etwa 23:00 Uhr habe ich ein Schlafmittel genommen, ich schlafe auf Reisen schlecht."
+        },
+        {
+          "id": "r_heard",
+          "question": "Haben Sie etwas durch die Wand gehört?",
+          "requires": {
+            "asked": "r_where"
+          },
+          "answer": "Gegen halb zwölf, plusminus eine Viertelstunde, einen dumpfen Aufprall, wie etwas Schweres, das umfällt. Kurz darauf eine Tür. Ich dachte, Konrad räumt auf. Die Zeit kann ich nicht beschwören.",
+          "grants": {
+            "evidence": [
+              "ev_roth_stmt"
+            ]
+          }
+        },
+        {
+          "id": "r_lawyer",
+          "question": "Im Aktenkoffer lag ein Briefentwurf für die Polizei. Wussten Sie davon?",
+          "requires": {
+            "evidence": "ev_briefcase"
+          },
+          "answer": "Ich habe den Entwurf mit ihm abgestimmt. Er wollte heute um 9 Uhr Anzeige gegen seinen Kompagnon erstatten. Er hat ihn am Abend damit konfrontiert, das hat er mir kurz vor 22 Uhr gesagt."
+        }
+      ],
+      "voice": "Dr. Sabine Roth"
     }
   ],
-
   "actions": [
-    { "id": "a_autopsy", "title": "Obduktion anordnen", "description": "Die Rechtsmedizin Zürich untersucht die Todesursache und das Todeszeitfenster.", "result": "Der Autopsiebericht liegt vor: stumpfes Schädel-Hirn-Trauma, einzelner Schlag gegen die linke Schläfe, Todeszeitfenster 23:15–00:15 Uhr.", "grants": { "evidence": ["ev_autopsy"] } },
-    { "id": "a_locks", "title": "Schliessprotokoll Suite 412 auslesen lassen", "description": "Das Hotel-Schliesssystem speichert jede Kartennutzung am Schloss.", "result": "Die Hotel-IT liefert das Protokoll der Tür 412 mit Kartentyp und Uhrzeit.", "grants": { "evidence": ["ev_lock_log"] } },
-    { "id": "a_print", "title": "Fingerabdruckvergleich Bronzefalke", "description": "Teilabdruck an der Tatwaffe mit freiwillig abgegebenen Vergleichsabdrücken abgleichen.", "requires": { "all": [ { "evidence": "ev_weapon" }, { "asked": "b_prints" } ] }, "result": "Das Gutachten der Kriminaltechnik liegt vor: Der Teilabdruck an der Sockelunterseite stimmt mit dem Vergleichsabdruck von Lukas Brandt überein (14 Minutien). Ein direkter Beweis für den Zeitpunkt des Kontakts ist das allein nicht.", "grants": { "evidence": ["ev_print_report"] } },
-    { "id": "a_blood", "title": "Blut- und DNA-Analyse Sakko", "description": "Fleck am Sakkoärmel auf Blut untersuchen und das DNA-Profil mit dem Opfer vergleichen.", "requires": { "evidence": "ev_jacket" }, "result": "Das Forensische Institut bestätigt: Blut des Opfers am Ärmel, vermischt mit Rotwein.", "grants": { "evidence": ["ev_blood_report"] } },
-    { "id": "a_phone", "title": "Verbindungsdaten von Elena Imhof auswerten", "description": "Telefonverbindungen und Mobilfunkzellen für die Tatnacht beim Provider anfordern.", "requires": { "asked": "e_outside" }, "result": "Der Provider liefert die Daten: ein durchgehendes Telefonat von 23:08 bis 23:52 Uhr aus der Zelle der Hotelterrasse.", "grants": { "evidence": ["ev_elena_phone"] } },
-    { "id": "a_bank", "title": "Finanzen der Kunsthandels AG prüfen", "description": "Bankunterlagen zu den Verkaufserlösen der Galerie auswerten.", "requires": { "evidence": "ev_briefcase" }, "result": "Die Bankanalyse zeigt: Die Erlöse aus dem Verkauf des Gemäldes flossen auf ein Privatkonto des Mitgeschäftsführers.", "grants": { "evidence": ["ev_bank"] } }
+    {
+      "id": "a_autopsy",
+      "title": "Obduktion anordnen",
+      "description": "Die Rechtsmedizin Zürich untersucht die Todesursache und das Todeszeitfenster.",
+      "result": "Der Autopsiebericht liegt vor: stumpfes Schädel-Hirn-Trauma, einzelner Schlag gegen die linke Schläfe, Todeszeitfenster 23:15–00:15 Uhr.",
+      "grants": {
+        "evidence": [
+          "ev_autopsy"
+        ]
+      }
+    },
+    {
+      "id": "a_locks",
+      "title": "Schliessprotokoll Suite 412 auslesen lassen",
+      "description": "Das Hotel-Schliesssystem speichert jede Kartennutzung am Schloss.",
+      "result": "Die Hotel-IT liefert das Protokoll der Tür 412 mit Kartentyp und Uhrzeit.",
+      "grants": {
+        "evidence": [
+          "ev_lock_log"
+        ]
+      }
+    },
+    {
+      "id": "a_print",
+      "title": "Fingerabdruckvergleich Bronzefalke",
+      "description": "Teilabdruck an der Tatwaffe mit freiwillig abgegebenen Vergleichsabdrücken abgleichen.",
+      "requires": {
+        "all": [
+          {
+            "evidence": "ev_weapon"
+          },
+          {
+            "asked": "b_prints"
+          }
+        ]
+      },
+      "result": "Das Gutachten der Kriminaltechnik liegt vor: Der Teilabdruck an der Sockelunterseite stimmt mit dem Vergleichsabdruck von Lukas Brandt überein (14 Minutien). Ein direkter Beweis für den Zeitpunkt des Kontakts ist das allein nicht.",
+      "grants": {
+        "evidence": [
+          "ev_print_report"
+        ]
+      }
+    },
+    {
+      "id": "a_blood",
+      "title": "Blut- und DNA-Analyse Sakko",
+      "description": "Fleck am Sakkoärmel auf Blut untersuchen und das DNA-Profil mit dem Opfer vergleichen.",
+      "requires": {
+        "evidence": "ev_jacket"
+      },
+      "result": "Das Forensische Institut bestätigt: Blut des Opfers am Ärmel, vermischt mit Rotwein.",
+      "grants": {
+        "evidence": [
+          "ev_blood_report"
+        ]
+      }
+    },
+    {
+      "id": "a_phone",
+      "title": "Verbindungsdaten von Elena Imhof auswerten",
+      "description": "Telefonverbindungen und Mobilfunkzellen für die Tatnacht beim Provider anfordern.",
+      "requires": {
+        "asked": "e_outside"
+      },
+      "result": "Der Provider liefert die Daten: ein durchgehendes Telefonat von 23:08 bis 23:52 Uhr aus der Zelle der Hotelterrasse.",
+      "grants": {
+        "evidence": [
+          "ev_elena_phone"
+        ]
+      }
+    },
+    {
+      "id": "a_bank",
+      "title": "Finanzen der Kunsthandels AG prüfen",
+      "description": "Bankunterlagen zu den Verkaufserlösen der Galerie auswerten.",
+      "requires": {
+        "evidence": "ev_briefcase"
+      },
+      "result": "Die Bankanalyse zeigt: Die Erlöse aus dem Verkauf des Gemäldes flossen auf ein Privatkonto des Mitgeschäftsführers.",
+      "grants": {
+        "evidence": [
+          "ev_bank"
+        ]
+      }
+    }
   ],
-
   "timeline": [
-    { "id": "tl_found", "time": "07:10", "day": 1, "title": "Leiche in Suite 412 gefunden", "text": "Zimmerservice findet Dr. Imhof leblos.", "source": "Polizeirapport" },
-    { "id": "tl_card", "time": "19:30", "title": "Zusatzkarte Suite 412 ausgegeben", "text": "An der Rezeption autorisiert Imhof eine Zusatzkarte für Zimmer 308.", "requires": { "evidence": "ev_card_ledger" }, "source": "Kartenjournal" },
-    { "id": "tl_tobias", "time": "21:34", "title": "Haustechniker in der Suite", "text": "Duschreparatur bis 21:58; Imhof telefoniert über „morgen früh Polizei\".", "requires": { "evidence": "ev_tobias_stmt" }, "source": "Aussage Wyss / Schliessprotokoll" },
-    { "id": "tl_bar", "time": "22:48", "title": "Letzte Barzahlung Zimmer 308", "text": "Zahlung per Zimmerrechnung, danach keine weitere Buchung.", "requires": { "evidence": "ev_bar_receipt" }, "source": "Bar-Kassenbericht" },
-    { "id": "tl_call", "time": "22:55", "title": "Telefonat Suite 412 → Zimmer 308", "text": "41 Sekunden, Gespräch kam zustande.", "requires": { "evidence": "ev_suite_phone" }, "source": "Gesprächsjournal" },
-    { "id": "tl_break", "time": "23:08", "title": "Nachtleiterin in der Pause", "text": "Empfang unbesetzt bis 23:38.", "requires": { "evidence": "ev_timeclock" }, "source": "Zeiterfassung" },
-    { "id": "tl_elena", "time": "23:08", "title": "Elena Imhof telefoniert auf der Terrasse", "text": "Durchgehend bis 23:52, gleiche Funkzelle.", "requires": { "evidence": "ev_elena_phone" }, "source": "Verbindungsdaten" },
-    { "id": "tl_camoff", "time": "23:12", "title": "Kamera 4B fällt aus", "text": "Planmässiges Firmware-Update, Neustart.", "requires": { "evidence": "ev_cam_log" }, "source": "Kameraprotokoll / Ticket" },
-    { "id": "tl_enter", "time": "23:22", "title": "Zusatzkarte öffnet Suite 412", "text": "Die Karte, die um 19:30 Uhr ausgegeben wurde, öffnet die Tür.", "requires": { "evidence": "ev_lock_log" }, "source": "Schliessprotokoll" },
-    { "id": "tl_thud", "time": "23:30", "uncertainty": 15, "title": "Dumpfer Aufprall (unsicher)", "text": "Nachbarin hört einen schweren Aufprall und eine Tür; Zeit ± 15 Minuten.", "requires": { "evidence": "ev_roth_stmt" }, "source": "Aussage Dr. Roth" },
-    { "id": "tl_camon", "time": "23:41", "title": "Kamera 4B wieder online", "text": "Danach unauffälliger Flur.", "requires": { "evidence": "ev_cam_log" }, "source": "Kameraprotokoll" },
-    { "id": "tl_leave", "time": "23:51", "title": "Zusatzkarte schliesst Suite von aussen", "text": "29 Minuten nach dem Öffnen.", "requires": { "evidence": "ev_lock_log" }, "source": "Schliessprotokoll" },
-    { "id": "tl_stairs", "time": "23:52", "title": "Brandschutztür löst aus", "text": "Öffnung Richtung Treppenhaus.", "requires": { "evidence": "ev_stairwell" }, "source": "Alarmprotokoll" },
-    { "id": "tl_clean", "time": "23:58", "title": "Gast aus 308 verlangt Express-Reinigung", "text": "Sakko mit Fleck am Ärmel; Auftrag um 00:10 bestätigt.", "requires": { "evidence": "ev_mara_stmt" }, "source": "Aussage Keller" },
-    { "id": "tl_death", "time": "23:15", "uncertainty": 60, "title": "Todeszeitfenster beginnt", "text": "Rechtsmedizin: 23:15–00:15 Uhr.", "requires": { "evidence": "ev_autopsy" }, "source": "Autopsiebericht" }
+    {
+      "id": "tl_found",
+      "time": "07:10",
+      "day": 1,
+      "title": "Leiche in Suite 412 gefunden",
+      "text": "Zimmerservice findet Dr. Imhof leblos.",
+      "source": "Polizeirapport"
+    },
+    {
+      "id": "tl_card",
+      "time": "19:30",
+      "title": "Zusatzkarte Suite 412 ausgegeben",
+      "text": "An der Rezeption autorisiert Imhof eine Zusatzkarte für Zimmer 308.",
+      "requires": {
+        "evidence": "ev_card_ledger"
+      },
+      "source": "Kartenjournal"
+    },
+    {
+      "id": "tl_tobias",
+      "time": "21:34",
+      "title": "Haustechniker in der Suite",
+      "text": "Duschreparatur bis 21:58; Imhof telefoniert über „morgen früh Polizei\".",
+      "requires": {
+        "evidence": "ev_tobias_stmt"
+      },
+      "source": "Aussage Wyss / Schliessprotokoll"
+    },
+    {
+      "id": "tl_bar",
+      "time": "22:48",
+      "title": "Letzte Barzahlung Zimmer 308",
+      "text": "Zahlung per Zimmerrechnung, danach keine weitere Buchung.",
+      "requires": {
+        "evidence": "ev_bar_receipt"
+      },
+      "source": "Bar-Kassenbericht"
+    },
+    {
+      "id": "tl_call",
+      "time": "22:55",
+      "title": "Telefonat Suite 412 → Zimmer 308",
+      "text": "41 Sekunden, Gespräch kam zustande.",
+      "requires": {
+        "evidence": "ev_suite_phone"
+      },
+      "source": "Gesprächsjournal"
+    },
+    {
+      "id": "tl_break",
+      "time": "23:08",
+      "title": "Nachtleiterin in der Pause",
+      "text": "Empfang unbesetzt bis 23:38.",
+      "requires": {
+        "evidence": "ev_timeclock"
+      },
+      "source": "Zeiterfassung"
+    },
+    {
+      "id": "tl_elena",
+      "time": "23:08",
+      "title": "Elena Imhof telefoniert auf der Terrasse",
+      "text": "Durchgehend bis 23:52, gleiche Funkzelle.",
+      "requires": {
+        "evidence": "ev_elena_phone"
+      },
+      "source": "Verbindungsdaten"
+    },
+    {
+      "id": "tl_camoff",
+      "time": "23:12",
+      "title": "Kamera 4B fällt aus",
+      "text": "Planmässiges Firmware-Update, Neustart.",
+      "requires": {
+        "evidence": "ev_cam_log"
+      },
+      "source": "Kameraprotokoll / Ticket"
+    },
+    {
+      "id": "tl_enter",
+      "time": "23:22",
+      "title": "Zusatzkarte öffnet Suite 412",
+      "text": "Die Karte, die um 19:30 Uhr ausgegeben wurde, öffnet die Tür.",
+      "requires": {
+        "evidence": "ev_lock_log"
+      },
+      "source": "Schliessprotokoll"
+    },
+    {
+      "id": "tl_thud",
+      "time": "23:30",
+      "uncertainty": 15,
+      "title": "Dumpfer Aufprall (unsicher)",
+      "text": "Nachbarin hört einen schweren Aufprall und eine Tür; Zeit ± 15 Minuten.",
+      "requires": {
+        "evidence": "ev_roth_stmt"
+      },
+      "source": "Aussage Dr. Roth"
+    },
+    {
+      "id": "tl_camon",
+      "time": "23:41",
+      "title": "Kamera 4B wieder online",
+      "text": "Danach unauffälliger Flur.",
+      "requires": {
+        "evidence": "ev_cam_log"
+      },
+      "source": "Kameraprotokoll"
+    },
+    {
+      "id": "tl_leave",
+      "time": "23:51",
+      "title": "Zusatzkarte schliesst Suite von aussen",
+      "text": "29 Minuten nach dem Öffnen.",
+      "requires": {
+        "evidence": "ev_lock_log"
+      },
+      "source": "Schliessprotokoll"
+    },
+    {
+      "id": "tl_stairs",
+      "time": "23:52",
+      "title": "Brandschutztür löst aus",
+      "text": "Öffnung Richtung Treppenhaus.",
+      "requires": {
+        "evidence": "ev_stairwell"
+      },
+      "source": "Alarmprotokoll"
+    },
+    {
+      "id": "tl_clean",
+      "time": "23:58",
+      "title": "Gast aus 308 verlangt Express-Reinigung",
+      "text": "Sakko mit Fleck am Ärmel; Auftrag um 00:10 bestätigt.",
+      "requires": {
+        "evidence": "ev_mara_stmt"
+      },
+      "source": "Aussage Keller"
+    },
+    {
+      "id": "tl_death",
+      "time": "23:15",
+      "uncertainty": 60,
+      "title": "Todeszeitfenster beginnt",
+      "text": "Rechtsmedizin: 23:15–00:15 Uhr.",
+      "requires": {
+        "evidence": "ev_autopsy"
+      },
+      "source": "Autopsiebericht"
+    },
+    {
+      "id": "tl_chat",
+      "time": "18:47",
+      "title": "Imhof kündigt Brandt Aussprache und Anzeige an",
+      "text": "Per Messenger: Karte für die Suite, 23:15 Uhr, danach Polizei.",
+      "requires": {
+        "evidence": "ev_chat_brandt"
+      },
+      "source": "Chatverlauf"
+    },
+    {
+      "id": "tl_vm",
+      "time": "20:15",
+      "title": "Brandt hinterlässt Mailbox-Nachricht",
+      "text": "Fordert Rückruf, warnt vor einer Anzeige.",
+      "requires": {
+        "evidence": "ev_voicemail_brandt"
+      },
+      "source": "Mailbox"
+    }
   ],
-
   "hints": [
-    { "id": "h1a", "level": 1, "text": "Ein Alibi ist nur so gut wie seine Belege. Vergleiche, was die Beteiligten sagen, mit harten Daten: Protokollen, Kassenbons, Karten." },
-    { "id": "h2a", "level": 2, "unless": { "evidence": "ev_lock_log" }, "text": "Die Schliesstechnik der Suite protokolliert jeden Zutritt. Das ist ein Ermittlungsbereich, den du noch nicht ausgeschöpft hast." },
-    { "id": "h2b", "level": 2, "unless": { "evidence": "ev_card_ledger" }, "text": "Zwei Karten öffneten die Suite. Wer verwaltet Zusatzkarten – und wo wird das festgehalten?" },
-    { "id": "h2c", "level": 2, "unless": { "evidence": "ev_bar_receipt" }, "text": "Nicht jede Aussage über den Abend lässt sich im Gespräch prüfen. Manche Orte führen Buch über Zahlungen." },
-    { "id": "h2d", "level": 2, "unless": { "evidence": "ev_blood_report" }, "text": "Kleidung kann mehr verraten als Aussagen. Wer hat nach der Tat etwas reinigen lassen?" },
-    { "id": "h3a", "level": 3, "unless": { "evidence": "ev_lock_log" }, "text": "Lass das Schliessprotokoll der Suite 412 über eine Ermittlungsaktion auslesen." },
-    { "id": "h3b", "level": 3, "unless": { "evidence": "ev_card_ledger" }, "text": "Frage die Nachtleiterin nach Zusatzkarten. Das Kartenjournal liegt im Backoffice der Rezeption." },
-    { "id": "h3c", "level": 3, "unless": { "evidence": "ev_bar_receipt" }, "text": "Frage die Gäste, wo sie am Abend waren, und prüfe danach die Hotelbar auf Kassenbons." },
-    { "id": "h3d", "level": 3, "unless": { "evidence": "ev_blood_report" }, "text": "Der Express-Reinigungskorb im Untergeschoss enthält ein Beweisstück. Lass es labortechnisch untersuchen." },
-    { "id": "h4a", "level": 4, "unless": { "evidence": "ev_blood_report" }, "text": "Ein Gast behauptet, bis nach Mitternacht in der Bar gewesen zu sein und danach niemanden mehr getroffen zu haben. Kassenbon, Telefonjournal, Kartenjournal und Schliessprotokoll widerlegen das gemeinsam. Prüfe zusätzlich seine Kleidung." },
-    { "id": "h4b", "level": 4, "text": "Die Kamera-Lücke ist ein Zufall (Wartungsticket), keine Spur. Entscheidend ist, wer die Zusatzkarte hatte und wer sich um 22:48 Uhr aus der Bar verabschiedete und später nicht mehr zu sehen war." }
+    {
+      "id": "h1a",
+      "level": 1,
+      "text": "Ein Alibi ist nur so gut wie seine Belege. Vergleiche, was die Beteiligten sagen, mit harten Daten: Protokollen, Kassenbons, Karten."
+    },
+    {
+      "id": "h2a",
+      "level": 2,
+      "unless": {
+        "evidence": "ev_lock_log"
+      },
+      "text": "Die Schliesstechnik der Suite protokolliert jeden Zutritt. Das ist ein Ermittlungsbereich, den du noch nicht ausgeschöpft hast."
+    },
+    {
+      "id": "h2b",
+      "level": 2,
+      "unless": {
+        "evidence": "ev_card_ledger"
+      },
+      "text": "Zwei Karten öffneten die Suite. Wer verwaltet Zusatzkarten – und wo wird das festgehalten?"
+    },
+    {
+      "id": "h2c",
+      "level": 2,
+      "unless": {
+        "evidence": "ev_bar_receipt"
+      },
+      "text": "Nicht jede Aussage über den Abend lässt sich im Gespräch prüfen. Manche Orte führen Buch über Zahlungen."
+    },
+    {
+      "id": "h2d",
+      "level": 2,
+      "unless": {
+        "evidence": "ev_blood_report"
+      },
+      "text": "Kleidung kann mehr verraten als Aussagen. Wer hat nach der Tat etwas reinigen lassen?"
+    },
+    {
+      "id": "h3a",
+      "level": 3,
+      "unless": {
+        "evidence": "ev_lock_log"
+      },
+      "text": "Lass das Schliessprotokoll der Suite 412 über eine Ermittlungsaktion auslesen."
+    },
+    {
+      "id": "h3b",
+      "level": 3,
+      "unless": {
+        "evidence": "ev_card_ledger"
+      },
+      "text": "Frage die Nachtleiterin nach Zusatzkarten. Das Kartenjournal liegt im Backoffice der Rezeption."
+    },
+    {
+      "id": "h3c",
+      "level": 3,
+      "unless": {
+        "evidence": "ev_bar_receipt"
+      },
+      "text": "Frage die Gäste, wo sie am Abend waren, und prüfe danach die Hotelbar auf Kassenbons."
+    },
+    {
+      "id": "h3d",
+      "level": 3,
+      "unless": {
+        "evidence": "ev_blood_report"
+      },
+      "text": "Der Express-Reinigungskorb im Untergeschoss enthält ein Beweisstück. Lass es labortechnisch untersuchen."
+    },
+    {
+      "id": "h4a",
+      "level": 4,
+      "unless": {
+        "evidence": "ev_blood_report"
+      },
+      "text": "Ein Gast behauptet, bis nach Mitternacht in der Bar gewesen zu sein und danach niemanden mehr getroffen zu haben. Kassenbon, Telefonjournal, Kartenjournal und Schliessprotokoll widerlegen das gemeinsam. Prüfe zusätzlich seine Kleidung."
+    },
+    {
+      "id": "h4b",
+      "level": 4,
+      "text": "Die Kamera-Lücke ist ein Zufall (Wartungsticket), keine Spur. Entscheidend ist, wer die Zusatzkarte hatte und wer sich um 22:48 Uhr aus der Bar verabschiedete und später nicht mehr zu sehen war."
+    }
   ],
-
   "accusation": {
     "motives": [
-      { "id": "mo_inherit", "label": "Erbschaft / finanzieller Vorteil durch den Tod" },
-      { "id": "mo_cover", "label": "Vertuschung eines Betrugs, der durch eine Anzeige aufgeflogen wäre" },
-      { "id": "mo_jealous", "label": "Eifersucht oder eine private Beziehung" },
-      { "id": "mo_revenge", "label": "Rache für eine Kündigung oder Demütigung" },
-      { "id": "mo_blackmail", "label": "Erpressung" }
+      {
+        "id": "mo_inherit",
+        "label": "Erbschaft / finanzieller Vorteil durch den Tod"
+      },
+      {
+        "id": "mo_cover",
+        "label": "Vertuschung eines Betrugs, der durch eine Anzeige aufgeflogen wäre"
+      },
+      {
+        "id": "mo_jealous",
+        "label": "Eifersucht oder eine private Beziehung"
+      },
+      {
+        "id": "mo_revenge",
+        "label": "Rache für eine Kündigung oder Demütigung"
+      },
+      {
+        "id": "mo_blackmail",
+        "label": "Erpressung"
+      }
     ],
     "methods": [
-      { "id": "me_blunt", "label": "Ein Schlag mit dem Bronzefalken, Zutritt mit der Zusatzkarte; Tatwaffe abgewischt, Spuren beseitigt" },
-      { "id": "me_poison", "label": "Vergiftung des Weins" },
-      { "id": "me_push", "label": "Sturz aus dem Fenster oder von einer Treppe" },
-      { "id": "me_strangle", "label": "Erwürgen in der Suite" },
-      { "id": "me_master", "label": "Eindringen mit einem Generalschlüssel und Überfall im Schlaf" }
+      {
+        "id": "me_blunt",
+        "label": "Ein Schlag mit dem Bronzefalken, Zutritt mit der Zusatzkarte; Tatwaffe abgewischt, Spuren beseitigt"
+      },
+      {
+        "id": "me_poison",
+        "label": "Vergiftung des Weins"
+      },
+      {
+        "id": "me_push",
+        "label": "Sturz aus dem Fenster oder von einer Treppe"
+      },
+      {
+        "id": "me_strangle",
+        "label": "Erwürgen in der Suite"
+      },
+      {
+        "id": "me_master",
+        "label": "Eindringen mit einem Generalschlüssel und Überfall im Schlaf"
+      }
     ]
   },
-
   "solution": {
     "culprit": "su_brandt",
     "motive": "mo_cover",
     "method": "me_blunt",
-    "key_evidence": ["ev_card_ledger", "ev_lock_log", "ev_bar_receipt", "ev_briefcase", "ev_print_report", "ev_blood_report"],
+    "key_evidence": [
+      "ev_card_ledger",
+      "ev_lock_log",
+      "ev_bar_receipt",
+      "ev_briefcase",
+      "ev_print_report",
+      "ev_blood_report"
+    ],
     "min_key": 4,
-    "timeline": ["tl_bar", "tl_call", "tl_enter", "tl_leave", "tl_clean"],
+    "timeline": [
+      "tl_bar",
+      "tl_call",
+      "tl_enter",
+      "tl_leave",
+      "tl_clean"
+    ],
     "resolution": {
       "summary": "Lukas Brandt erschlug seinen Geschäftspartner Dr. Konrad Imhof in der Nacht des 13. November in Suite 412. Imhof hatte ein Gutachten, das bewies, dass das mit CHF 480'000 verkaufte Gemälde „Alpenglühen\" eine Fälschung war, und wollte Brandt am Morgen um 9 Uhr bei der Kantonspolizei anzeigen.",
       "reconstruction": [
@@ -243,5 +1393,176 @@
         "Dr. Roth: Wusste vom Anzeigeplan, hat aber weder Motiv noch Gelegenheit – sie schlief nebenan."
       ]
     }
+  },
+  "voices": {
+    "Lukas Brandt": {
+      "gender": "m",
+      "pitch": 0.85,
+      "rate": 1.0
+    },
+    "Konrad Imhof": {
+      "gender": "m",
+      "pitch": 0.7,
+      "rate": 0.95
+    },
+    "Dr. Sabine Roth": {
+      "gender": "f",
+      "pitch": 1.0,
+      "rate": 1.0
+    },
+    "Elena Imhof": {
+      "gender": "f",
+      "pitch": 1.2,
+      "rate": 1.05
+    },
+    "Mara Keller": {
+      "gender": "f",
+      "pitch": 1.1,
+      "rate": 1.0
+    },
+    "Tobias Wyss": {
+      "gender": "m",
+      "pitch": 0.6,
+      "rate": 0.9
+    }
+  },
+  "phone": {
+    "owner": "Dr. Konrad Imhof",
+    "model": "Smartphone",
+    "lock": {
+      "pin": "1913",
+      "requires": {
+        "evidence": "ev_mobile"
+      },
+      "source": "ev_briefcase",
+      "hint": "Vierstellig. Imhof wählte eine Jahreszahl, die mit dem Streit um das Gemälde zu tun hat."
+    },
+    "chats": [
+      {
+        "id": "pc_brandt",
+        "contact": "Lukas Brandt",
+        "evidence": "ev_chat_brandt",
+        "grants": {
+          "evidence": [
+            "ev_chat_brandt"
+          ]
+        },
+        "messages": [
+          {
+            "from": "Lukas Brandt",
+            "text": "Konrad, was soll die Geheimniskrämerei? Du bist seit Mittag abweisend.",
+            "time": "17:58"
+          },
+          {
+            "from": "me",
+            "text": "Ich habe das Labor-Gutachten zu „Alpenglühen“. Es ist eine Fälschung, Lukas. Und du hast die Verkäufe abgewickelt.",
+            "time": "18:42"
+          },
+          {
+            "from": "Lukas Brandt",
+            "text": "Das ist ein Irrtum. Lass uns heute Abend in Ruhe reden.",
+            "time": "18:44"
+          },
+          {
+            "from": "me",
+            "text": "Du bekommst nachher eine Karte für die Suite. 23:15. Danach gehe ich zur Polizei – mit oder ohne dein Einverständnis.",
+            "time": "18:47"
+          },
+          {
+            "from": "Lukas Brandt",
+            "text": "Tu nichts Unüberlegtes.",
+            "time": "18:49"
+          }
+        ]
+      },
+      {
+        "id": "pc_elena",
+        "contact": "Elena",
+        "messages": [
+          {
+            "from": "Elena",
+            "text": "Papa, bitte. Ich brauche heute noch eine Antwort wegen dem Atelier.",
+            "time": "20:30"
+          },
+          {
+            "from": "me",
+            "text": "Morgen. Heute habe ich Wichtigeres.",
+            "time": "20:41"
+          },
+          {
+            "from": "Elena",
+            "text": "Wichtiger als deine Tochter?",
+            "time": "20:42"
+          }
+        ]
+      },
+      {
+        "id": "pc_roth",
+        "contact": "Dr. Sabine Roth",
+        "messages": [
+          {
+            "from": "Dr. Sabine Roth",
+            "text": "Der Entwurf ist fertig. 09:00 bei der Kantonspolizei passt.",
+            "time": "21:05"
+          },
+          {
+            "from": "me",
+            "text": "Danke, Sabine. Brandt weiss vom genauen Termin noch nichts.",
+            "time": "21:07"
+          }
+        ]
+      }
+    ],
+    "calls": [
+      {
+        "id": "pcall_vm",
+        "kind": "voicemail",
+        "contact": "Lukas Brandt",
+        "time": "20:15",
+        "duration": 38,
+        "evidence": "ev_voicemail_brandt",
+        "grants": {
+          "evidence": [
+            "ev_voicemail_brandt"
+          ]
+        },
+        "transcript": [
+          {
+            "speaker": "Lukas Brandt",
+            "text": "Konrad, ich bin’s. Ruf mich zurück."
+          },
+          {
+            "speaker": "Lukas Brandt",
+            "text": "Wir können das unter uns regeln. Wenn du die Polizei einschaltest, ruinierst du uns beide – und das lasse ich nicht zu."
+          },
+          {
+            "speaker": "Lukas Brandt",
+            "text": "Ruf an. Heute noch."
+          }
+        ]
+      },
+      {
+        "id": "pcall_roth",
+        "kind": "call",
+        "contact": "Dr. Sabine Roth",
+        "time": "21:50",
+        "duration": 124,
+        "direction": "eingehend",
+        "transcript": [
+          {
+            "speaker": "Dr. Sabine Roth",
+            "text": "Konrad, ich habe das Schreiben noch einmal durchgesehen. Sind Sie sicher, dass Sie ihn vorher warnen wollen?"
+          },
+          {
+            "speaker": "Konrad Imhof",
+            "text": "Ich gebe ihm die Chance, sich zu erklären. Heute Nacht, unter vier Augen. Mehr ist er mir nach zwanzig Jahren nicht schuldig – und nicht weniger."
+          },
+          {
+            "speaker": "Dr. Sabine Roth",
+            "text": "Dann seien Sie vorsichtig. Wir sehen uns um neun."
+          }
+        ]
+      }
+    ]
   }
 }

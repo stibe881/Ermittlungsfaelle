@@ -1,6 +1,6 @@
 import { h, mount } from '../dom.js';
 import { get, post, uuid } from '../api.js';
-import { toast, fmtTime, modal, media, CATEGORY } from '../ui.js';
+import { toast, fmtTime, modal, media, CATEGORY, player, chatBubbles, stopSpeech, canSpeak } from '../ui.js';
 import { boardView } from './board.js';
 import { accuseView, resolutionView, hintModal, tvModal } from './extra.js';
 
@@ -8,9 +8,9 @@ let S = null, sid = 0, tab = 'scene', sceneId = null, suspectId = null, root = n
 let timers = [], busy = false, dragging = false, pendingRender = false, fetchedAt = 0, zoom = false, tvLinked = false;
 const compareSel = new Set();
 const seenEvidence = new Set();
-const TABS = [['scene', 'Tatort'], ['evidence', 'Beweise'], ['suspects', 'Verhöre'], ['timeline', 'Zeitachse'], ['board', 'Pinnwand'], ['notes', 'Notizen'], ['actions', 'Aktionen'], ['accuse', 'Anklage']];
+const TABS = [['scene', 'Tatort'], ['evidence', 'Beweise'], ['suspects', 'Verhöre'], ['phone', 'Handy'], ['timeline', 'Zeitachse'], ['board', 'Pinnwand'], ['notes', 'Notizen'], ['actions', 'Aktionen'], ['accuse', 'Anklage']];
 
-export function stopPlay() { timers.forEach(clearInterval); timers = []; S = null; root = null; }
+export function stopPlay() { stopSpeech(); timers.forEach(clearInterval); timers = []; S = null; root = null; }
 export const setDragging = v => { dragging = v; if (!v && pendingRender) render(); };
 
 export async function act(type, extra = {}) {
@@ -65,7 +65,8 @@ function render() {
   if (dragging || (a && ['INPUT', 'TEXTAREA', 'SELECT'].includes(a.tagName) && main.contains(a))) { pendingRender = true; if (!dragging) a.addEventListener('blur', () => render(), { once: true }); return; }
   pendingRender = false;
   const closed = ['solved', 'failed'].includes(S.status);
-  const tabs = closed ? [['resolution', 'Auflösung'], ...TABS.slice(0, 7)] : TABS;
+  const baseTabs = TABS.filter(t => t[0] !== 'phone' || S.phone);
+  const tabs = closed ? [['resolution', 'Auflösung'], ...baseTabs.slice(0, -1)] : baseTabs;
   if (!tabs.find(t => t[0] === tab)) tab = tabs[0][0];
   const newCount = S.evidence.filter(e => !seenEvidence.has(e.id)).length;
   mount(head,
@@ -78,7 +79,7 @@ function render() {
       !closed && h('button', { class: 'btn small', onclick: () => act('pause') }, '⏸')),
     h('div', { class: 'tabs', role: 'tablist' }, tabs.map(([k, label]) => h('button', { class: 'tab', role: 'tab', 'aria-selected': tab === k, onclick: () => { tab = k; if (k === 'evidence') S.evidence.forEach(e => seenEvidence.add(e.id)); render(); } },
       label, k === 'evidence' && newCount > 0 && h('span', { class: 'badge' }, newCount)))));
-  const view = { scene: sceneTab, evidence: evidenceTab, suspects: suspectsTab, timeline: timelineTab, board: () => boardView(S, act, { showEvidence, tvShow }), notes: notesTab, actions: actionsTab, accuse: () => accuseView(S, act), resolution: () => resolutionView(S) }[tab];
+  const view = { scene: sceneTab, evidence: evidenceTab, suspects: suspectsTab, phone: phoneTab, timeline: timelineTab, board: () => boardView(S, act, { showEvidence, tvShow }), notes: notesTab, actions: actionsTab, accuse: () => accuseView(S, act), resolution: () => resolutionView(S) }[tab];
   mount(main, S.status === 'paused' ? pausedOverlay() : null, view());
 }
 
@@ -123,6 +124,7 @@ export function showEvidence(id) {
     e.media && media(e.media, e.title),
     h('div', { class: 'doc' }, h('h4', {}, `${CATEGORY[e.category] || e.category} · ${e.id.replace('ev_', '').toUpperCase()}`),
       h('div', { class: 'meta' }, `Fundort: ${e.location}${e.time ? ' · ' + e.time : ''}`), h('p', {}, e.description)),
+    e.transcript && (e.category === 'chat' ? chatBubbles(e.transcript.map(m => ({ from: m.speaker === 'Konrad Imhof' ? 'me' : m.speaker, text: m.text, time: m.t })), 'me') : player(e.transcript, S.voices, { audio: e.audio, video: e.video, title: e.title })),
     e.links.length > 0 && h('div', { class: 'chips' }, h('span', { class: 'muted small' }, 'Verknüpft: '), e.links.map(l => { const x = S.evidence.find(y => y.id === l); return h('button', { class: 'chipbtn', onclick: () => showEvidence(l) }, x.title); })),
     h('div', { class: 'row end' },
       h('button', { class: 'btn small', onclick: () => tvShow('evidence', id) }, '📺 Auf TV'),
@@ -156,7 +158,7 @@ function initials(n) { return n.replace(/Dr\.\s*/, '').split(' ').map(x => x[0])
 
 function suspectsTab() {
   const su = S.suspects.find(s => s.id === suspectId) || S.suspects[0];
-  const chat = h('div', { class: 'chat', id: 'chat' }, su.history.length ? su.history.flatMap(x => [h('div', { class: 'bubble q' }, x.question), h('div', { class: 'bubble a' }, x.answer)]) : h('p', { class: 'muted' }, 'Noch keine Befragung.'));
+  const chat = h('div', { class: 'chat', id: 'chat' }, su.history.length ? su.history.flatMap(x => [h('div', { class: 'bubble q' }, x.question), h('div', { class: 'bubble a' }, x.answer, canSpeak() && h('button', { class: 'btn small ghost listen', 'aria-label': 'Antwort anhören', onclick: () => listen(su, x.answer) }, '🔊'))]) : h('p', { class: 'muted' }, 'Noch keine Befragung.'));
   setTimeout(() => { const c = document.getElementById('chat'); if (c) c.scrollTop = c.scrollHeight; });
   return h('div', {},
     h('div', { class: 'sus-list' }, S.suspects.map(s => h('button', { class: 'sus', 'aria-pressed': s.id === su.id, onclick: () => { suspectId = s.id; render(); } },
@@ -218,4 +220,40 @@ function actionsTab() {
       a.done ? h('div', { class: 'doc' }, h('p', {}, a.result)) : h('button', { class: 'btn primary', onclick: async () => {
         const r = await act('run_action', { action: a.id }); if (r?.new_evidence?.length) toast('Ergebnis liegt vor – neuer Beweis gesichert', 'ok');
       } }, 'Beauftragen'))));
+}
+
+function listen(su, text) {
+  const m = modal('Verhör-Aufnahme · ' + su.name, player([{ speaker: su.name, text }], S.voices, { title: 'Verhör ' + su.name }));
+}
+
+// ---------------------------------------------------------------- Handy
+let phonePin = '', phoneErr = '', phoneSub = 'chats';
+function phoneTab() {
+  const ph = S.phone;
+  const frame = (...k) => h('div', { class: 'phone' }, h('div', { class: 'status' }, h('span', {}, ph.owner), h('span', {}, '●●●●')), ...k);
+  if (!ph.unlocked) {
+    const dots = h('div', { class: 'pin-dots' + (phoneErr ? ' shake' : '') }, [0, 1, 2, 3].map(i => h('i', { class: i < phonePin.length ? 'on' : '' })));
+    const press = async d => {
+      if (phonePin.length >= 4) return; phonePin += d;
+      if (phonePin.length === 4) {
+        const r = await act('phone_unlock', { pin: phonePin }); phonePin = '';
+        if (r && !r.ok) { phoneErr = r.hint; toast('Falsche PIN', 'error'); render(); phoneErr = ''; } else if (r) toast('Handy entsperrt', 'ok');
+        return;
+      }
+      render();
+    };
+    return frame(h('h3', { class: 'center' }, 'Gesperrt'), h('p', { class: 'center muted small' }, 'PIN eingeben. Tipp: ', ph.hint), dots,
+      h('div', { class: 'keypad' }, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].map(k => k === '' ? h('span') : h('button', { 'aria-label': k === '⌫' ? 'Löschen' : k, onclick: () => k === '⌫' ? (phonePin = phonePin.slice(0, -1), render()) : press(k) }, k))));
+  }
+  const openChat = async c => { if (!c.open) await act('phone_open', { item: c.id }); const f = S.phone.chats.find(x => x.id === c.id); modal('Chat · ' + f.contact, chatBubbles(f.messages)); };
+  const openCall = async c => {
+    if (!c.played) await act('phone_open', { item: c.id });
+    const f = S.phone.calls.find(x => x.id === c.id);
+    modal((f.kind === 'voicemail' ? 'Mailbox · ' : 'Anruf · ') + f.contact, h('div', {}, h('p', { class: 'muted small' }, `${f.direction} · ${f.time} · ${Math.floor(f.duration / 60)}:${String(f.duration % 60).padStart(2, '0')} Min.`), player(f.transcript, S.voices, { title: f.contact })), { wide: true });
+  };
+  const list = phoneSub === 'chats'
+    ? S.phone.chats.map(c => h('button', { onclick: () => openChat(c) }, h('span', { class: 'dot' + (c.open ? ' read' : '') }), h('div', { class: 'grow' }, h('strong', {}, c.contact), h('div', { class: 'small muted' }, c.open ? c.preview : 'Ungelesen – antippen')), h('span', { class: 'small muted' }, c.time)))
+    : S.phone.calls.map(c => h('button', { onclick: () => openCall(c) }, h('span', { class: 'dot' + (c.played ? ' read' : '') }), h('div', { class: 'grow' }, h('strong', {}, (c.kind === 'voicemail' ? '📼 ' : '📞 ') + c.contact), h('div', { class: 'small muted' }, `${c.direction} · ${c.kind === 'voicemail' ? 'Mailbox' : 'Gespräch'} · ${c.duration} s`)), h('span', { class: 'small muted' }, c.time)));
+  return frame(h('div', { class: 'chips' }, h('button', { class: 'chipbtn', 'aria-pressed': phoneSub === 'chats', onclick: () => { phoneSub = 'chats'; render(); } }, '💬 Nachrichten'), h('button', { class: 'chipbtn', 'aria-pressed': phoneSub === 'calls', onclick: () => { phoneSub = 'calls'; render(); } }, '📞 Anrufe & Mailbox')),
+    h('div', { class: 'plist' }, list));
 }
